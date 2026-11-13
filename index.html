@@ -226,101 +226,191 @@ header{background:#11130f!important;color:#f4f1e8!important;border-bottom:1px so
 @media(max-width:760px){.project-grid{grid-template-columns:minmax(0,1fr)!important;gap:20px!important}.project-art{height:220px!important;min-height:220px!important;max-height:220px!important;flex-basis:220px!important}.project>p{font-size:.86rem!important}}
 @media(prefers-reduced-motion:reduce){.project-art:before,.project-art:after,.project-art *{animation:none!important}}
 
-/* SHREYA PROJECTS — editorial carousel */
-.projects{background:radial-gradient(ellipse at 85% 45%,#b6e9000c,transparent 40%),#0d0e0c;overflow:hidden}
-.showcase-wrap{max-width:1480px!important}
-.showcase-heading{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:42px}
-.showcase-heading h2{font:600 clamp(2.8rem,5.6vw,5.3rem)/.92 Oswald,sans-serif;letter-spacing:-.035em;margin:12px 0;text-transform:uppercase}
-.showcase-heading h2 em,.project-rail h3 em{font-style:normal;color:var(--orange)}
-.showcase-heading p{color:var(--muted);margin:12px 0 0;max-width:500px;font-size:.95rem}
-.showcase-count{font: .8rem 'DM Mono',monospace;color:#8e9180;white-space:nowrap;padding-bottom:10px}
+/* ================================================================
+   PROJECTS SECTION: 3D LAPTOP WORKSTATION & EDITORIAL SHOWCASE
+   ================================================================ */
+.projects{position:relative;background:radial-gradient(ellipse at 85% 45%,#b6e9000c,transparent 40%),radial-gradient(circle at 15% 20%,#ff8a240a,transparent 35%),#0d0e0c;overflow:hidden;perspective:2000px}
+.projects:before{content:"";position:absolute;inset:0;background-image:linear-gradient(#ffffff05 1px,transparent 1px),linear-gradient(90deg,#ffffff05 1px,transparent 1px);background-size:64px 64px;opacity:.6;pointer-events:none;mask-image:linear-gradient(180deg,#000 60%,transparent 100%)}
+.showcase-wrap{max-width:1400px!important;position:relative;z-index:2}
+.showcase-heading{display:flex;align-items:end;justify-content:space-between;gap:25px;margin-bottom:44px}
+.showcase-heading h2{font:600 clamp(2.8rem,5.6vw,5.3rem)/.92 Oswald,sans-serif;letter-spacing:-.035em;margin:12px 0 0;text-transform:uppercase}
+.showcase-heading h2 em{font-style:normal;color:var(--orange)}
+.showcase-heading p{color:var(--muted);margin:12px 0 0;max-width:540px;font-size:.95rem;line-height:1.7}
+.showcase-count{font:.8rem 'DM Mono',monospace;color:#8e9180;white-space:nowrap;padding-bottom:8px}
 .showcase-count strong{font-size:2.4rem;color:#d2ff00;font-weight:500}
-.showcase-layout{display:grid;grid-template-columns:minmax(250px,.36fr) minmax(0,1fr);gap:24px;align-items:stretch;perspective:1400px}
-.project-rail{padding:28px 20px 20px;background:linear-gradient(155deg,#1b2016,#11130f 75%);border:1px solid #d2ff0038;box-shadow:14px 18px 55px #0005;transform:translateX(-55px);opacity:0;transition:transform .9s cubic-bezier(.2,.8,.2,1),opacity .8s;min-width:0}
-.projects.showcase-entered .project-rail{transform:translateX(0);opacity:1}
-.rail-kicker{font: .62rem 'DM Mono',monospace;color:#d2ff00;letter-spacing:.18em}
-.project-rail h3{font:600 clamp(1.9rem,3vw,2.7rem)/.94 Oswald,sans-serif;margin:12px 0 24px;text-transform:uppercase}
-.project-tabs{display:grid;gap:8px}
-.project-tab{width:100%;min-width:0;display:grid;grid-template-columns:54px minmax(0,1fr) 15px;gap:12px;align-items:center;text-align:left;padding:9px;border:1px solid #ffffff13;background:#ffffff04;color:#eee9df;cursor:pointer;transition:background .3s,border-color .3s,transform .3s,box-shadow .3s}
-.project-tab:hover{transform:translateX(4px);border-color:#d2ff0080}
-.project-tab.active{background:linear-gradient(100deg,#d2ff001b,#ffffff05);border-color:#d2ff00a6;box-shadow:inset 3px 0 #d2ff00,0 8px 25px #0004}
-.tab-preview{height:46px;position:relative;overflow:hidden;display:block;background:radial-gradient(circle at 50% 50%,#d2ff0066,transparent 38%),linear-gradient(135deg,#29321a,#10130f);border:1px solid #d2ff0044}
-.tab-preview:before,.tab-preview:after{content:"";position:absolute;border:1px solid #d2ff00a0;border-radius:50%;width:28px;height:28px;left:50%;top:50%;transform:translate(-50%,-50%) rotateX(60deg);box-shadow:0 0 12px #d2ff0040}
-.tab-preview:after{width:17px;height:17px;transform:translate(-50%,-50%) rotateY(60deg)}
-.tab-preview-2{background:radial-gradient(circle,#d2ff0080,transparent 35%),linear-gradient(135deg,#24301c,#10120f)}
+
+/* LAPTOP CONTAINER & 3D HARDWARE CHASSIS */
+.laptop-container{position:relative;width:100%;perspective:2200px;margin:10px auto 30px}
+.laptop-device{position:relative;width:100%;max-width:1260px;margin:0 auto;padding:12px 14px 18px;border-radius:20px 20px 9px 9px;background:linear-gradient(145deg,#4e5554,#181c1c 20%,#303737 68%,#0a0c0c);border:1px solid rgba(255,255,255,.2);box-shadow:0 38px 85px rgba(0,0,0,.85),0 0 0 1px rgba(255,255,255,.12),inset 0 1px 2px rgba(255,255,255,.5);transform-origin:left center;transform:translate3d(-180px,0,0) rotateY(18deg) scale(.94);opacity:0;transition:transform 1.25s cubic-bezier(.16,1,.3,1),opacity .95s ease-out;will-change:transform,opacity}
+.projects.showcase-entered .laptop-device{transform:translate3d(0,0,0) rotateY(0deg) scale(1);opacity:1}
+
+/* Top Bezel with Camera */
+.laptop-bezel-top{height:16px;display:flex;align-items:center;justify-content:center;position:relative}
+.laptop-camera{display:flex;align-items:center;gap:6px}
+.camera-lens{width:6px;height:6px;border-radius:50%;background:#060808;box-shadow:0 0 0 1px #808681,inset 0 0 2px #444}
+.camera-led{width:3px;height:3px;border-radius:50%;background:#27c93f;box-shadow:0 0 6px #27c93f;opacity:.85}
+
+/* OLED SCREEN DISPLAY */
+.laptop-screen{position:relative;border-radius:8px 8px 3px 3px;background:#0d0e0c;border:1px solid #060808;box-shadow:inset 0 0 0 1px rgba(255,255,255,.09),0 0 35px rgba(0,0,0,.85);overflow:hidden}
+.screen-glare{position:absolute;top:0;right:0;width:45%;height:100%;background:linear-gradient(125deg,rgba(255,255,255,.06),transparent 45%);pointer-events:none;z-index:10}
+
+/* Screen Chrome (macOS App Bar) */
+.screen-chrome{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:11px 18px;background:linear-gradient(180deg,#1c1f1b,#121411);border-bottom:1px solid rgba(255,255,255,.08);font:.65rem 'DM Mono',monospace;color:#a4ad92}
+.chrome-dots{display:flex;align-items:center;gap:7px}
+.chrome-dots .dot{width:11px;height:11px;border-radius:50%;display:inline-block}
+.dot-red{background:#ff5f56;box-shadow:0 0 6px rgba(255,95,86,.4)}
+.dot-yellow{background:#ffbd2e;box-shadow:0 0 6px rgba(255,189,46,.4)}
+.dot-green{background:#27c93f;box-shadow:0 0 6px rgba(39,201,63,.4)}
+.chrome-title{display:flex;align-items:center;gap:10px}
+.chrome-badge{padding:3px 8px;border-radius:99px;background:rgba(210,255,0,.12);border:1px solid rgba(210,255,0,.35);color:#d2ff00;font-size:.56rem;letter-spacing:.12em}
+.chrome-path{color:#d8dec7;letter-spacing:.08em}
+.chrome-path strong{color:#d2ff00;font-weight:600}
+.chrome-status{display:flex;align-items:center;gap:9px}
+.pulse-dot{width:7px;height:7px;border-radius:50%;background:#d2ff00;box-shadow:0 0 10px #d2ff00;animation:pulseStatus 2s infinite}
+@keyframes pulseStatus{50%{transform:scale(1.3);opacity:.6}}
+.auto-tag{font-size:.58rem;color:#b2b89f;letter-spacing:.1em}
+.counter-tag{padding:2px 7px;background:rgba(255,255,255,.06);border-radius:4px;color:#d2ff00}
+.counter-tag strong{font-size:.82rem;font-weight:700}
+
+/* LAPTOP SCREEN BODY WORKSPACE (SPLIT LAYOUT) */
+.laptop-inner-layout{display:grid;grid-template-columns:minmax(290px,.75fr) minmax(0,1.25fr);align-items:stretch;min-height:560px}
+
+/* LEFT NAVIGATION RAIL (PROJECT TABS) */
+.project-rail{padding:24px 18px 20px;background:radial-gradient(ellipse at 50% 0%,rgba(210,255,0,.08),transparent 60%),linear-gradient(165deg,#181c15,#10120f 85%);border-right:1px solid rgba(255,255,255,.08);display:flex;flex-direction:column}
+.rail-intro{margin-bottom:16px}
+.rail-kicker{font:.58rem 'DM Mono',monospace;color:#d2ff00;letter-spacing:.18em;text-transform:uppercase}
+.rail-heading{font:600 clamp(1.8rem,2.4vw,2.4rem)/.95 Oswald,sans-serif;margin:8px 0 6px;text-transform:uppercase}
+.rail-heading em{font-style:normal;color:var(--orange)}
+.rail-desc{font-size:.78rem;color:#9ba08c;line-height:1.45;margin:0}
+.project-tabs{display:grid;gap:8px;margin-top:10px}
+.project-tab{width:100%;min-width:0;display:grid;grid-template-columns:52px minmax(0,1fr) 14px;gap:12px;align-items:center;text-align:left;padding:9px 10px;border:1px solid rgba(255,255,255,.1);border-radius:7px;background:rgba(255,255,255,.03);color:#eee9df;cursor:pointer;transition:all .28s cubic-bezier(.2,.8,.2,1)}
+.project-tab:hover{transform:translateX(4px);border-color:rgba(210,255,0,.65);background:rgba(210,255,0,.06)}
+.project-tab.active{background:linear-gradient(100deg,rgba(210,255,0,.2),rgba(255,255,255,.03));border-color:#d2ff00;box-shadow:inset 3px 0 #d2ff00,0 6px 20px rgba(0,0,0,.5);transform:translateX(5px)}
+.tab-preview{height:46px;position:relative;overflow:hidden;display:block;border-radius:4px;background:radial-gradient(circle at 50% 50%,rgba(210,255,0,.4),transparent 45%),linear-gradient(135deg,#232b18,#10120f);border:1px solid rgba(210,255,0,.35)}
+.tab-preview:before,.tab-preview:after{content:"";position:absolute;border:1px solid rgba(210,255,0,.8);border-radius:50%;width:26px;height:26px;left:50%;top:50%;transform:translate(-50%,-50%) rotateX(60deg);box-shadow:0 0 10px rgba(210,255,0,.3)}
+.tab-preview:after{width:16px;height:16px;transform:translate(-50%,-50%) rotateY(60deg)}
+.tab-preview-2{background:radial-gradient(circle,rgba(210,255,0,.5),transparent 40%),linear-gradient(135deg,#24301c,#10120f)}
 .tab-preview-3{background:linear-gradient(135deg,#17231b,#10120f)}
 .tab-preview-3:before{border-radius:4px;transform:translate(-50%,-50%) rotate(45deg)}
-.tab-preview-4{background:radial-gradient(circle at 50% 50%,#ff9a4555,transparent 42%),linear-gradient(135deg,#332116,#10120f)}
+.tab-preview-4{background:radial-gradient(circle at 50% 50%,rgba(255,154,69,.45),transparent 45%),linear-gradient(135deg,#332116,#10120f)}
 .tab-preview-4:before{border-color:#ff9a45;transform:translate(-50%,-50%) rotateX(60deg) rotateZ(45deg)}
 .tab-preview-5{background:linear-gradient(135deg,#1c2331,#11131a)}
-.tab-preview-5:before{border-color:#8fa8ff;box-shadow:0 0 12px #8fa8ff55}
+.tab-preview-5:before{border-color:#8fa8ff;box-shadow:0 0 10px rgba(143,168,255,.4)}
 .tab-preview-6{background:linear-gradient(135deg,#2b1e30,#11121a)}
-.tab-preview-6:before{border-color:#c59aff;box-shadow:0 0 12px #c59aff55}
-.tab-copy{display:grid;gap:5px;min-width:0}
-.tab-copy small{font: .52rem 'DM Mono',monospace;color:#a4ad83;letter-spacing:.04em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.tab-copy strong{font:500 .86rem Inter,sans-serif;line-height:1.25}
-.tab-arrow{color:#d2ff00;opacity:.4}
-.project-tab.active .tab-arrow{opacity:1}
-.rail-footer{border-top:1px solid #ffffff18;margin-top:20px;padding-top:15px;font: .56rem 'DM Mono',monospace;color:#9ca18d;letter-spacing:.1em}
-.rail-live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#d2ff00;box-shadow:0 0 12px #d2ff00;margin-right:7px}
-.showcase-main{min-width:0;padding:20px;background:linear-gradient(145deg,#171a14,#10110e);border:1px solid #ffffff20;box-shadow:0 25px 65px #0007;transform:translateZ(20px)}
-.showcase-topline{display:flex;justify-content:space-between;gap:12px;padding:0 3px 15px;border-bottom:1px solid #ffffff18;font:.62rem 'DM Mono',monospace;color:#d2ff00;letter-spacing:.12em}
-.showcase-topline span:last-child{color:#9da18f}
-.showcase-topline b{color:#ff9b45;font-weight:400}
-.showcase-viewport{overflow:hidden;position:relative;min-height:0}
-.showcase-track{display:flex;align-items:stretch;transition:transform .85s cubic-bezier(.2,.75,.15,1);will-change:transform}
-.showcase-track .showcase-slide{flex:0 0 100%;width:100%;min-width:100%;min-height:0!important;height:auto!important;display:flex!important;flex-direction:column;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;transform:none!important;opacity:1!important;visibility:visible;transition:opacity .5s}
-.showcase-slide .project-art{height:clamp(190px,27vw,300px)!important;min-height:clamp(190px,27vw,300px)!important;margin:0 0 23px!important;border:1px solid #d2ff0033!important;background-color:#171d13!important}
-.showcase-slide .project-art:before,.showcase-slide .project-art:after{display:none!important}
-.showcase-slide .project-meta{padding:0 2px!important}
-.showcase-slide h3{font:600 clamp(1.8rem,3.5vw,3rem)/1.02 Oswald,sans-serif!important;margin:14px 0 10px!important}
-.showcase-slide p{font-size:clamp(.9rem,1.1vw,1rem)!important;line-height:1.8!important;max-width:740px!important;color:#c4c8b9!important;margin:0 0 22px!important}
-.showcase-slide .tags{margin-top:auto!important;padding-top:4px}
-.showcase-slide .project-link{display:inline-flex!important;align-self:flex-start;margin-top:22px!important;padding-top:14px!important;border-top:1px solid #ffffff20;color:#ff9b45}
-.showcase-controls{padding-top:18px}
-.showcase-progress{height:2px;background:#ffffff18;overflow:hidden}
-.showcase-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,#d2ff00,#ff9b45);box-shadow:0 0 12px #d2ff00}
+.tab-preview-6:before{border-color:#c59aff;box-shadow:0 0 10px rgba(197,154,255,.4)}
+.tab-copy{display:grid;gap:3px;min-width:0}
+.tab-copy small{font:.52rem 'DM Mono',monospace;color:#a6af86;letter-spacing:.05em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;text-transform:uppercase}
+.tab-copy strong{font:500 .84rem Inter,sans-serif;line-height:1.2;color:#f4f1e8}
+.tab-arrow{color:#d2ff00;opacity:.35;font-size:.9rem;transition:opacity .2s,transform .2s}
+.project-tab:hover .tab-arrow,.project-tab.active .tab-arrow{opacity:1;transform:translate(2px,-2px)}
+.rail-footer{border-top:1px solid rgba(255,255,255,.09);margin-top:auto;padding-top:14px;font:.56rem 'DM Mono',monospace;color:#9aa088;letter-spacing:.12em;display:flex;align-items:center}
+.rail-live-dot{display:inline-block;width:7px;height:7px;border-radius:50%;background:#d2ff00;box-shadow:0 0 10px #d2ff00;margin-right:8px}
+
+/* RIGHT MAIN SHOWCASE STAGE */
+.showcase-main{min-width:0;padding:22px 24px;background:linear-gradient(155deg,#151812,#0f110e);display:flex;flex-direction:column;position:relative}
+.showcase-topline{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:0 2px 14px;border-bottom:1px solid rgba(255,255,255,.08);font:.64rem 'DM Mono',monospace;letter-spacing:.12em}
+.showcase-meta-tag{color:#d2ff00;text-transform:uppercase;font-weight:500}
+.showcase-swipe-hint{color:#828876;font-size:.56rem}
+
+/* Viewport and Track */
+.showcase-viewport{overflow:hidden;position:relative;flex:1;min-height:0;cursor:grab;touch-action:pan-y}
+.showcase-viewport:active{cursor:grabbing}
+.showcase-track{display:flex;align-items:stretch;height:100%;transition:transform .7s cubic-bezier(.22,1,.36,1);will-change:transform}
+.showcase-track .showcase-slide{flex:0 0 100%;width:100%;min-width:100%;display:flex!important;flex-direction:column;padding:14px 2px 0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;opacity:.28!important;filter:blur(3px);transition:opacity .55s,filter .55s}
+.showcase-track .showcase-slide.is-active{opacity:1!important;filter:none}
+.showcase-track .showcase-slide.is-active .project-art{animation:slideArtEnter .6s cubic-bezier(.16,1,.3,1) both}
+.showcase-track .showcase-slide.is-active h3,.showcase-track .showcase-slide.is-active .project-what-it-does{animation:slideTextEnter .65s cubic-bezier(.16,1,.3,1) both}
+@keyframes slideArtEnter{from{opacity:.4;transform:scale(.96) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+@keyframes slideTextEnter{from{opacity:.2;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* Inside each Slide */
+.showcase-slide .project-art{height:205px!important;min-height:205px!important;max-height:205px!important;margin:0 0 18px!important;border:1px solid rgba(210,255,0,.25)!important;border-radius:6px!important;background-color:#141910!important;position:relative!important;overflow:hidden!important}
+.showcase-slide .project-meta-row{display:flex;justify-content:space-between;align-items:center;color:#d2ff00;font:.65rem 'DM Mono',monospace;letter-spacing:.12em;text-transform:uppercase;margin-bottom:8px}
+.showcase-slide h3{font:600 clamp(1.8rem,3vw,2.6rem)/1.05 Oswald,sans-serif!important;margin:0 0 12px!important;color:#f5f3ec!important;text-transform:uppercase}
+
+/* WHAT IT DOES BLOCK */
+.project-what-it-does{padding:12px 14px;border-radius:5px;background:rgba(210,255,0,.04);border:1px solid rgba(210,255,0,.2);margin-bottom:14px}
+.what-badge{display:inline-block;font:.58rem 'DM Mono',monospace;letter-spacing:.14em;color:#d2ff00;font-weight:600;margin-bottom:5px;text-transform:uppercase}
+.project-what-it-does p{font-size:.88rem!important;line-height:1.65!important;color:#cdd1c2!important;margin:0!important}
+
+/* Tags & Link */
+.showcase-slide .tags{display:flex!important;flex-wrap:wrap!important;gap:7px!important;margin-top:auto!important;padding-top:4px!important}
+.showcase-slide .tags span{font:.62rem 'DM Mono',monospace!important;padding:5px 8px!important;background:#202619!important;color:#d8ea9c!important;border:1px solid rgba(210,255,0,.3)!important;border-radius:3px}
+.showcase-slide .project-link{display:inline-flex!important;align-items:center!important;gap:8px!important;align-self:flex-start;margin-top:14px!important;padding-top:10px!important;border-top:1px solid rgba(255,255,255,.12);color:#ff9b45;font:.75rem 'DM Mono',monospace;text-transform:uppercase;letter-spacing:.08em;transition:color .2s}
+.showcase-slide .project-link span{color:#ff9b45}
+.showcase-slide .project-link i{font-style:normal;font-size:1rem;transition:transform .2s}
+.showcase-slide .project-link:hover{color:#d2ff00}
+.showcase-slide .project-link:hover span{color:#d2ff00}
+.showcase-slide .project-link:hover i{transform:translate(3px,-3px);color:#d2ff00}
+
+/* CONTROLS: PROGRESS BAR, DOTS & NEXT/PREV */
+.showcase-controls{padding-top:16px;border-top:1px solid rgba(255,255,255,.08);margin-top:14px}
+.showcase-progress{height:3px;background:rgba(255,255,255,.12);border-radius:2px;overflow:hidden}
+.showcase-progress span{display:block;width:0;height:100%;background:linear-gradient(90deg,#d2ff00,#ff9b45);box-shadow:0 0 10px #d2ff00}
 .showcase-progress span.running{animation:showcaseTimer 3s linear forwards}
 @keyframes showcaseTimer{from{width:0}to{width:100%}}
-.showcase-control-row{display:flex;justify-content:space-between;align-items:center;padding-top:14px}
-.showcase-hint{font:.58rem 'DM Mono',monospace;color:#838978;letter-spacing:.12em}
-.showcase-buttons{display:flex;gap:8px}
-.showcase-buttons button{width:42px;height:42px;border:1px solid #d2ff0066;background:#11150e;color:#d2ff00;font-size:1.2rem;cursor:pointer;transition:.25s}
-.showcase-buttons button:hover{background:#d2ff00;color:#111;transform:translateY(-3px);box-shadow:0 8px 20px #d2ff0033}
-@media(max-width:900px){.showcase-layout{grid-template-columns:1fr}.project-rail{transform:translateX(-35px)}.project-rail h3{margin-bottom:16px}.project-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.rail-footer{margin-top:14px}.showcase-main{min-height:560px}}
-@media(max-width:560px){.showcase-heading{align-items:start}.showcase-count{padding-top:8px}.project-rail{padding:20px 14px}.project-tabs{grid-template-columns:1fr 1fr;gap:6px}.project-tab{grid-template-columns:38px minmax(0,1fr);gap:8px;padding:7px}.tab-preview{height:38px}.tab-copy small{font-size:.46rem}.tab-copy strong{font-size:.72rem}.tab-arrow{display:none}.showcase-main{padding:13px;min-height:0}.showcase-slide .project-art{height:190px!important;min-height:190px!important}.showcase-slide h3{font-size:1.8rem!important}.showcase-hint{font-size:.48rem;letter-spacing:.04em}.showcase-buttons button{width:38px;height:38px}}
-@media(prefers-reduced-motion:reduce){.project-rail,.showcase-track,.project-tab,.showcase-buttons button{transition:none!important}.showcase-progress span.running{animation:none!important;width:100%}}
 
-/* LAPTOP-FRAMED INTERACTIVE PROJECT SHOWCASE */
-.showcase-layout{grid-template-columns:minmax(310px,.82fr) minmax(0,1.18fr)!important;gap:clamp(24px,3vw,48px)!important;align-items:center!important;perspective:1600px}
-.laptop-device{position:relative;min-width:0;padding:13px 13px 18px;border-radius:18px 18px 9px 9px;background:linear-gradient(145deg,#555b5a,#171b1b 18%,#303636 70%,#080a0a);border:1px solid #a9b0a84f;box-shadow:0 35px 70px #0009,0 0 0 1px #ffffff12,inset 0 1px 1px #ffffff55;transform:translate3d(0,0,0) rotateY(0) rotateX(0);opacity:1;transform-origin:center right;transition:transform 1.15s cubic-bezier(.16,1,.3,1),opacity .9s;will-change:transform}
-.projects.showcase-entered .laptop-device{animation:laptopArrive 1.05s cubic-bezier(.16,1,.3,1) both;opacity:1}\n@keyframes laptopArrive{from{transform:translate3d(-110px,24px,0) rotateY(13deg) rotateX(3deg)}to{transform:translate3d(0,0,0) rotateY(0) rotateX(0)}}
-.laptop-camera{position:absolute;top:5px;left:50%;width:5px;height:5px;border-radius:50%;background:#090c0c;box-shadow:0 0 0 1px #858b86;z-index:3}
-.laptop-screen{min-height:550px;overflow:hidden;border-radius:7px 7px 2px 2px;background:#0d0e0c;border:1px solid #070909;box-shadow:inset 0 0 0 1px #ffffff10,0 0 24px #0009}
-.laptop-screen .project-rail{display:block!important;visibility:visible!important;min-height:550px;padding:30px 20px 22px!important;background:radial-gradient(ellipse at 50% 0%,#d2ff0011,transparent 55%),linear-gradient(155deg,#1b2016,#10120f 78%)!important;border:0!important;box-shadow:none!important;opacity:1!important;transform:none!important;transition:none!important}
-.laptop-screen .rail-kicker{font-size:.58rem;letter-spacing:.15em}
-.laptop-screen .project-rail h3{font-size:clamp(2rem,2.7vw,2.8rem);margin:13px 0 23px}
-.laptop-screen .project-tabs{gap:9px}
-.laptop-screen .project-tab{grid-template-columns:58px minmax(0,1fr) 14px;padding:10px;min-height:67px;background:linear-gradient(110deg,#ffffff08,#ffffff02);border-color:#ffffff16;border-radius:5px}
-.laptop-screen .project-tab.active{background:linear-gradient(100deg,#d2ff0023,#ffffff06);border-color:#d2ff00b8;box-shadow:inset 3px 0 #d2ff00,0 8px 22px #0007}
-.laptop-screen .tab-preview{height:48px;border-radius:3px}
-.laptop-screen .tab-copy small{font-size:.49rem}
-.laptop-screen .tab-copy strong{font-size:.82rem}
-.laptop-screen .rail-footer{font-size:.53rem}
-.laptop-base{height:17px;margin:0 -22px;position:relative;border-radius:0 0 50% 50% / 0 0 80% 80%;background:linear-gradient(180deg,#a5aaa4,#555c5b 32%,#252a29 68%,#090b0b);box-shadow:0 13px 20px #0009}
-.laptop-base:after{content:"";position:absolute;left:38%;top:0;width:24%;height:4px;border-radius:0 0 8px 8px;background:linear-gradient(180deg,#151918,#747b75)}
-.showcase-main{transform:translateY(22px) translateZ(35px);opacity:0;transition:transform 1s .18s cubic-bezier(.16,1,.3,1),opacity .8s .18s}
-.projects.showcase-entered .showcase-main{transform:translateY(0) translateZ(35px);opacity:1}
-.showcase-track{perspective:1100px}
-.showcase-track .showcase-slide{backface-visibility:hidden;transform-origin:center center;transition:opacity .55s,filter .65s}
-.showcase-track .showcase-slide[aria-hidden="true"]{opacity:.28!important;filter:blur(3px);pointer-events:none}
-.showcase-track .showcase-slide[aria-hidden="false"]{opacity:1!important;filter:blur(0);animation:projectReveal .72s cubic-bezier(.2,.8,.2,1) both}
-@keyframes projectReveal{from{opacity:.35;transform:translate3d(36px,0,-60px) rotateY(-7deg) scale(.975)}to{opacity:1;transform:translate3d(0,0,0) rotateY(0) scale(1)}}
-.project-tab.active .tab-preview{box-shadow:0 0 18px #d2ff0033}
-@media(max-width:1000px){.showcase-layout{grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr)!important;gap:22px!important}.laptop-screen .project-rail{min-height:530px;padding:25px 15px 18px!important}.laptop-screen .project-tab{grid-template-columns:45px minmax(0,1fr) 10px;gap:8px;padding:8px}.laptop-screen .tab-preview{height:42px}}
-@media(max-width:760px){.showcase-layout{grid-template-columns:1fr!important;gap:28px!important}.laptop-device{max-width:520px;width:100%;margin:0 auto;transform:translate3d(-80px,20px,0) rotateY(8deg)}.projects.showcase-entered .laptop-device{animation:laptopArrive 1.05s cubic-bezier(.16,1,.3,1) both}.laptop-screen .project-rail{min-height:0;padding:24px 18px 18px!important}.laptop-screen .project-tabs{grid-template-columns:repeat(2,minmax(0,1fr))}.laptop-screen .project-tab{grid-template-columns:42px minmax(0,1fr);min-height:62px}.laptop-screen .tab-arrow{display:none}.laptop-base{margin:0 -16px}.showcase-main{min-height:0}}
-@media(max-width:480px){.laptop-device{padding:10px 10px 14px;border-radius:13px 13px 6px 6px}.laptop-screen .project-rail{padding:20px 12px 15px!important}.laptop-screen .project-tabs{grid-template-columns:1fr}.laptop-screen .project-tab{grid-template-columns:48px minmax(0,1fr) 12px}.laptop-screen .tab-preview{height:40px}.laptop-screen .project-rail h3{font-size:2rem;margin-bottom:15px}.laptop-screen .rail-footer{margin-top:12px}}
-@media(prefers-reduced-motion:reduce){.laptop-device,.showcase-main{animation:none!important;transition:none!important;transform:none!important;opacity:1!important}.showcase-track .showcase-slide[aria-hidden="false"]{animation:none!important}}
+.showcase-control-row{display:flex;justify-content:space-between;align-items:center;padding-top:12px}
+.showcase-dots{display:flex;align-items:center;gap:7px}
+.dot-btn{width:9px;height:9px;padding:0;border:1px solid rgba(255,255,255,.3);border-radius:50%;background:rgba(255,255,255,.08);cursor:pointer;transition:all .25s ease}
+.dot-btn:hover{border-color:#d2ff00;background:rgba(210,255,0,.4)}
+.dot-btn.active{width:24px;border-radius:10px;background:#d2ff00;border-color:#d2ff00;box-shadow:0 0 10px rgba(210,255,0,.6)}
+
+.showcase-buttons{display:flex;gap:8px}
+.showcase-buttons button{width:42px;height:42px;border:1px solid rgba(210,255,0,.4);border-radius:4px;background:#11150e;color:#d2ff00;font-size:1.25rem;cursor:pointer;display:grid;place-items:center;transition:all .25s cubic-bezier(.2,.8,.2,1)}
+.showcase-buttons button:hover{background:#d2ff00;color:#111;transform:translateY(-2px);box-shadow:0 6px 20px rgba(210,255,0,.4)}
+.showcase-buttons button:active{transform:translateY(0)}
+
+/* LAPTOP BASE, HINGE & NOTCH */
+.laptop-base{height:18px;margin:0 -24px;position:relative;border-radius:0 0 50% 50% / 0 0 80% 80%;background:linear-gradient(180deg,#a7ada7,#535a59 34%,#232828 72%,#080a0a);box-shadow:0 18px 28px rgba(0,0,0,.95)}
+.laptop-base:after{content:"";position:absolute;left:38%;top:0;width:24%;height:5px;border-radius:0 0 8px 8px;background:linear-gradient(180deg,#121615,#6f7670)}
+.laptop-shadow{position:absolute;bottom:-28px;left:5%;right:5%;height:35px;background:radial-gradient(ellipse at 50% 50%,rgba(0,0,0,.85),transparent 75%);filter:blur(10px);z-index:-1;pointer-events:none}
+
+/* RESPONSIVE DESIGN */
+@media(max-width:1050px){
+  .laptop-inner-layout{grid-template-columns:minmax(260px,.8fr) minmax(0,1.2fr)}
+  .showcase-slide h3{font-size:2rem!important}
+  .showcase-slide .project-art{height:180px!important;min-height:180px!important}
+}
+@media(max-width:860px){
+  .laptop-inner-layout{grid-template-columns:1fr}
+  .project-rail{border-right:0;border-bottom:1px solid rgba(255,255,255,.08);padding:18px 14px}
+  .project-tabs{grid-template-columns:repeat(2,minmax(0,1fr));gap:6px}
+  .project-tab{grid-template-columns:40px minmax(0,1fr);padding:8px}
+  .tab-preview{height:38px}
+  .tab-arrow{display:none}
+  .rail-footer{display:none}
+  .showcase-main{padding:18px 14px}
+  .showcase-slide .project-art{height:180px!important;min-height:180px!important}
+  .laptop-device{transform:translate3d(-80px,0,0) rotateY(10deg);max-width:96%}
+}
+@media(max-width:640px){
+  .showcase-heading{align-items:start}
+  .project-rail{padding:14px 12px 10px}
+  .rail-intro{margin-bottom:8px}
+  .rail-heading{font-size:1.5rem}
+  .rail-desc{display:none}
+  .project-tabs{display:flex;overflow-x:auto;gap:8px;padding:4px 2px 10px;margin-top:4px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+  .project-tabs::-webkit-scrollbar{display:none}
+  .project-tab{flex:0 0 200px;min-width:200px;grid-template-columns:38px 1fr;padding:7px 9px;border-radius:6px}
+  .tab-preview{height:36px}
+  .tab-copy strong{font-size:.76rem}
+  .tab-copy small{font-size:.48rem}
+  .tab-arrow{display:none}
+  .laptop-device{padding:8px 8px 14px;border-radius:14px 14px 7px 7px}
+  .screen-chrome{padding:8px 12px}
+  .chrome-path{display:none}
+  .showcase-slide h3{font-size:1.55rem!important}
+  .showcase-slide .project-art{height:165px!important;min-height:165px!important}
+  .project-what-it-does p{font-size:.82rem!important}
+  .showcase-buttons button{width:36px;height:36px;font-size:1.1rem}
+  .laptop-base{margin:0 -12px;height:14px}
+}
+@media(prefers-reduced-motion:reduce){
+  .laptop-device{animation:none!important;transition:none!important;transform:none!important;opacity:1!important}
+  .showcase-track,.project-tab,.showcase-buttons button{transition:none!important}
+  .showcase-progress span.running{animation:none!important;width:100%}
+}
 </style></head>
 <body>
 <div id="progress"></div>
@@ -338,7 +428,7 @@ header{background:#11130f!important;color:#f4f1e8!important;border-bottom:1px so
 <article class="milestone reveal"><div class="mile-top"><span class="mile-num">03 · THE PRODUCT CHAPTER</span><span class="mile-date">CHAPTER 03 · AUG 2026 — NOV 2026</span></div><h3>AI/ML Intern</h3><div class="company">Matchbest Software Pvt. Ltd. · Gurugram</div><p>Worked across AI product features and backend integrations—HealNova model workflows, Period Tracker, notification recommendations, Xelta's credit system and a live transcription extension.</p><div class="mile-tags"><span>FastAPI</span><span>Node.js</span><span>AWS Lambda</span><span>Redis</span><span>WebSockets</span></div></article>
 <article class="milestone reveal"><div class="mile-top"><span class="mile-num">04 · THE NEXT HORIZON</span><span class="mile-date">2026 →</span></div><h3>Ready for the next challenge</h3><div class="company">AI/ML Engineering · Python Backend · GenAI</div><p>Looking to bring this cross-functional experience into a team building useful, reliable AI products and scalable software.</p><div class="mile-tags"><span>Learn</span><span>Build</span><span>Ship</span></div></article>
 </div></div></div></section>
-<section class="projects" id="projects"><div class="wrap showcase-wrap"><div class="showcase-heading"><div><div class="eyebrow">02 / SELECTED WORK</div><h2>SHREYA'S <em>PROJECTS</em></h2><p>Selected builds, experiments and intelligent systems — one story at a time.</p></div><div class="showcase-count"><strong id="showcase-current">01</strong><span>/ 06</span></div></div><div class="showcase-layout"><div class="laptop-device" aria-label="Shreya projects laptop showcase"><div class="laptop-camera"></div><div class="laptop-screen"><aside class="project-rail" aria-label="Project navigation"><div class="rail-kicker">PORTFOLIO · SELECTED WORK</div><h3>SHREYA'S<br><em>PROJECTS</em></h3><div class="project-tabs"><button class="project-tab active" type="button" data-slide="0" aria-label="Show Meet Live Transcription" aria-pressed="true"><span class="tab-preview tab-preview-1"><i></i><b></b></span><span class="tab-copy"><small>01 / SPEECH AI · NLP</small><strong>Meet Live Transcription</strong></span><span class="tab-arrow">↗</span></button><button class="project-tab" type="button" data-slide="1" aria-label="Show HealNova AI Workflows" aria-pressed="false"><span class="tab-preview tab-preview-2"><i></i><b></b></span><span class="tab-copy"><small>02 / HEALTH-TECH AI</small><strong>HealNova AI Workflows</strong></span><span class="tab-arrow">↗</span></button><button class="project-tab" type="button" data-slide="2" aria-label="Show Notification Recommendation" aria-pressed="false"><span class="tab-preview tab-preview-3"><i></i><b></b></span><span class="tab-copy"><small>03 / RECOMMENDATION SYSTEMS</small><strong>Notification Recommendation</strong></span><span class="tab-arrow">↗</span></button><button class="project-tab" type="button" data-slide="3" aria-label="Show Xelta 3D Website Builder" aria-pressed="false"><span class="tab-preview tab-preview-4"><i></i><b></b></span><span class="tab-copy"><small>04 / AI WEB PRODUCT</small><strong>Xelta 3D Website Builder</strong></span><span class="tab-arrow">↗</span></button><button class="project-tab" type="button" data-slide="4" aria-label="Show Movie Recommendation" aria-pressed="false"><span class="tab-preview tab-preview-5"><i></i><b></b></span><span class="tab-copy"><small>05 / MACHINE LEARNING</small><strong>Movie Recommendation</strong></span><span class="tab-arrow">↗</span></button><button class="project-tab" type="button" data-slide="5" aria-label="Show AI Job Role Matching" aria-pressed="false"><span class="tab-preview tab-preview-6"><i></i><b></b></span><span class="tab-copy"><small>06 / NLP · MATCHING</small><strong>AI Job Role Matching</strong></span><span class="tab-arrow">↗</span></button></div><div class="rail-footer"><span class="rail-live-dot"></span> SIX PROJECTS · ONE JOURNEY</div></aside></div><div class="laptop-base" aria-hidden="true"></div></div><div class="showcase-main"><div class="showcase-topline"><span id="showcase-category">SPEECH AI · NLP</span><span>AUTOPLAY <b>03 SEC</b></span></div><div class="showcase-viewport"><div class="showcase-track"><article class="project showcase-slide is-active" aria-hidden="false" data-kind="genai"><div class="project-art scene-audio"><div class="scene-label">LIVE AUDIO / 16 KHZ</div><div class="project-body"><div class="waveform"><i style="--h:18px;--d:0s"></i><i style="--h:69.18020808088271px;--d:-0.13s"></i><i style="--h:87.83244669234216px;--d:-0.26s"></i><i style="--h:62.102144099712454px;--d:-0.39s"></i><i style="--h:27.657610708985878px;--d:-0.52s"></i><i style="--h:75.27939777450871px;--d:-0.65s"></i><i style="--h:86.49682909587969px;--d:-0.78s"></i><i style="--h:54.18058110782007px;--d:0s"></i><i style="--h:37.13050964839087px;--d:-0.13s"></i><i style="--h:80.28305988452517px;--d:-0.26s"></i><i style="--h:83.85113896758412px;--d:-0.39s"></i><i style="--h:45.56702717093414px;--d:-0.52s"></i><i style="--h:46.23751785181388px;--d:-0.65s"></i><i style="--h:84.09549421027413px;--d:-0.78s"></i><i style="--h:79.94597786099553px;--d:0s"></i><i style="--h:36.42622539560618px;--d:-0.13s"></i><i style="--h:54.80445439070726px;--d:-0.26s"></i><i style="--h:86.6437840115866px;--d:-0.39s"></i><i style="--h:74.8560360116423px;--d:-0.52s"></i><i style="--h:26.93300304731479px;--d:-0.65s"></i><i style="--h:62.66746776435632px;--d:-0.78s"></i><i style="--h:87.87919061667424px;--d:0s"></i><i style="--h:68.67866380922119px;--d:-0.13s"></i><i style="--h:18.731072201374314px;--d:-0.26s"></i><i style="--h:69.6761697288932px;--d:-0.39s"></i><i style="--h:87.77808559951595px;--d:-0.52s"></i><i style="--h:61.532009870947206px;--d:-0.65s"></i><i style="--h:28.381164939887896px;--d:-0.78s"></i><i style="--h:75.69651162763174px;--d:0s"></i><i style="--h:86.34240269788559px;--d:-0.13s"></i><i style="--h:53.55276132734376px;--d:-0.26s"></i><i style="--h:37.832707187587914px;--d:-0.39s"></i></div><div class="scene-orbit"></div><span class="scene-chip">TAB + MIC</span></div></div><div class="project-meta"><span>Speech AI · NLP</span><span>01</span></div><h3>Meet Live Transcription</h3><p>Chrome extension workflow for live tab and microphone capture, audio processing, 16 kHz PCM and WebSocket/backend integration with multilingual support.</p><div class="tags"><span>Chrome Extension</span><span>AudioWorklet</span><span>FastAPI</span><span>WebSockets</span></div><a class="project-link" href="https://github.com/shreyasharma76" target="_blank" rel="noreferrer">Explore related code <span>↗</span></a></div></article><article class="project showcase-slide" aria-hidden="true" data-kind="ai"><div class="project-art scene-health"><div class="scene-label">HEALTH INTELLIGENCE</div><div class="project-body"><div class="scan-ring"><i></i><b></b><em></em></div><div class="scan-data"><span>VISION ANALYSIS</span><strong>AI / ML</strong><small>MODEL WORKFLOWS</small></div></div></div><div class="project-meta"><span>Health-tech AI</span><span>02</span></div><h3>HealNova AI Workflows</h3><p>Contributions across eye analysis, skin assessment, nutrition comparison, prescription-related processing, Vitamin Model integration and Period Tracker workflows.</p><div class="tags"><span>Python</span><span>FastAPI</span><span>AWS Lambda</span><span>Prisma</span></div><a class="project-link" href="https://github.com/shreyasharma76" target="_blank" rel="noreferrer">Explore related code <span>↗</span></a></div></article><article class="project showcase-slide" aria-hidden="true" data-kind="backend"><div class="project-art scene-network"><div class="scene-label">PERSONALIZATION ENGINE</div><div class="project-body"><svg viewBox="0 0 360 150" role="img" aria-label="Connected recommendation nodes"><g stroke="#d2ff00" stroke-opacity=".55" stroke-width="1.5"><path d="M40 76L120 35L190 70L280 25M40 76L120 115L190 70L280 120M190 70L320 73M120 35L280 120M120 115L280 25"/></g><g fill="#d2ff00"><circle cx="40" cy="76" r="7"/><circle cx="120" cy="35" r="6"/><circle cx="120" cy="115" r="6"/><circle cx="190" cy="70" r="11"/><circle cx="280" cy="25" r="6"/><circle cx="280" cy="120" r="6"/><circle cx="320" cy="73" r="7"/></g></svg><span class="scene-chip">RANK · CACHE · SUPPRESS</span></div></div><div class="project-meta"><span>Recommendation systems</span><span>03</span></div><h3>Notification Recommendation</h3><p>Personalized notification recommendation workflows and backend services, including caching and suppression logic.</p><div class="tags"><span>Node.js</span><span>BytePlus Recommend</span><span>Redis</span><span>PostgreSQL</span></div><a class="project-link" href="https://github.com/shreyasharma76" target="_blank" rel="noreferrer">Explore related code <span>↗</span></a></div></article><article class="project showcase-slide" aria-hidden="true" data-kind="backend"><div class="project-art scene-cube"><div class="scene-label">3D WEB BUILDER / CREDIT SYSTEM</div><div class="project-body"><div class="iso-cube"><i></i><b></b><em></em></div><div class="cube-orbit"></div><span class="scene-chip">AUTH + PREPAID CREDITS</span></div></div><div class="project-meta"><span>AI web product</span><span>04</span></div><h3>Xelta 3D Website Builder</h3><p>Contributed to authentication and prepaid-credit functionality, including backend integration, credit persistence and testing.</p><div class="tags"><span>Node.js</span><span>REST APIs</span><span>Database</span></div><a class="project-link" href="https://github.com/shreyasharma76" target="_blank" rel="noreferrer">Explore related code <span>↗</span></a></div></article><article class="project showcase-slide" aria-hidden="true" data-kind="ai"><div class="project-art scene-movie"><div class="scene-label">CONTENT DISCOVERY</div><div class="project-body"><div class="film-stack"><i>01</i><i>02</i><i>03</i><i>04</i></div><div class="scene-chip">SIMILARITY / RANKING</div></div></div><div class="project-meta"><span>Machine Learning</span><span>05</span></div><h3>Movie Recommendation</h3><p>Movie recommender built around content-based and collaborative recommendation concepts, preprocessing and similarity-based ranking.</p><div class="tags"><span>Python</span><span>Pandas</span><span>Scikit-learn</span></div><a class="project-link" href="https://github.com/shreyasharma76" target="_blank" rel="noreferrer">Explore related code <span>↗</span></a></div></article><article class="project showcase-slide" aria-hidden="true" data-kind="ai"><div class="project-art scene-match"><div class="scene-label">ROLE MATCHING / NLP</div><div class="project-body"><div class="match-graph"><i></i><i></i><i></i><b></b><em></em></div><div class="scene-chip">PROFILE ↔ ROLE</div></div></div><div class="project-meta"><span>NLP · Matching</span><span>06</span></div><h3>AI Job Role Matching</h3><p>Text-based matching workflow using preprocessing, feature extraction and similarity scoring to compare candidate profiles with role requirements.</p><div class="tags"><span>Python</span><span>NLP</span><span>Similarity</span></div><a class="project-link" href="https://github.com/shreyasharma76" target="_blank" rel="noreferrer">Explore related code <span>↗</span></a></div></article></div></div><div class="showcase-controls"><div class="showcase-progress"><span id="showcase-progress"></span></div><div class="showcase-control-row"><span class="showcase-hint">DRAG / SWIPE TO EXPLORE</span><div class="showcase-buttons"><button type="button" id="project-prev" aria-label="Previous project">←</button><button type="button" id="project-next" aria-label="Next project">→</button></div></div></div></div></div></div></section>
+<section class="projects" id="projects"><div class="wrap showcase-wrap"><div class="showcase-heading"><div><div class="eyebrow">02 / SELECTED WORK</div><h2>SHREYA'S <em>PROJECTS</em></h2><p>Intelligent systems, deep-learning pipelines and production-ready AI software — one build at a time.</p></div><div class="showcase-count"><strong id="showcase-current">01</strong><span>/ 06</span></div></div><div class="laptop-container"><div class="laptop-device" id="laptopDevice" aria-label="Shreya projects laptop showcase"><div class="laptop-bezel-top"><div class="laptop-camera"><span class="camera-lens"></span><span class="camera-led"></span></div></div><div class="laptop-screen"><div class="screen-glare"></div><div class="screen-chrome"><div class="chrome-dots"><span class="dot dot-red"></span><span class="dot dot-yellow"></span><span class="dot dot-green"></span></div><div class="chrome-title"><span class="chrome-badge">⚡ WORKSPACE</span><span class="chrome-path">shreya.portfolio / <strong>selected-projects</strong></span></div><div class="chrome-status"><span class="pulse-dot"></span><span class="auto-tag">3s AUTOPLAY</span><span class="counter-tag"><strong id="chrome-counter">01</strong>/06</span></div></div><div class="laptop-inner-layout"><aside class="project-rail" aria-label="Project tabs"><div class="rail-intro"><span class="rail-kicker">PORTFOLIO · SELECTED WORK</span><h3 class="rail-heading">SHREYA'S<br><em>PROJECTS</em></h3><p class="rail-desc">Click tab or slide right to explore builds</p></div><div class="project-tabs" role="tablist"><button class="project-tab active" type="button" data-slide="0" role="tab" aria-selected="true" aria-label="Show Meet Live Transcription"><span class="tab-preview tab-preview-1"><i></i><b></b></span><span class="tab-copy"><small>01 / SPEECH AI · NLP</small><strong>Meet Live Transcription</strong></span><span class="tab-arrow">↗</span></button><button class="project-tab" type="button" data-slide="1" role="tab" aria-selected="false" aria-label="Show HealNova AI Workflows"><span class="tab-preview tab-preview-2"><i></i><b></b></span><span class="tab-copy"><small>02 / HEALTH-TECH AI</small><strong>HealNova AI Workflows</strong></span><span class="tab-arrow">↗</span></button><button class="project-tab" type="button" data-slide="2" role="tab" aria-selected="false" aria-label="Show Notification Recommendation"><span class="tab-preview tab-preview-3"><i></i><b></b></span><span class="tab-copy"><small>03 / RECOMMENDATIONS</small><strong>Notification Recommendation</strong></span><span class="tab-arrow">↗</span></button><button class="project-tab" type="button" data-slide="3" role="tab" aria-selected="false" aria-label="Show Xelta 3D Website Builder"><span class="tab-preview tab-preview-4"><i></i><b></b></span><span class="tab-copy"><small>04 / AI WEB PRODUCT</small><strong>Xelta 3D Website Builder</strong></span><span class="tab-arrow">↗</span></button><button class="project-tab" type="button" data-slide="4" role="tab" aria-selected="false" aria-label="Show Movie Recommendation"><span class="tab-preview tab-preview-5"><i></i><b></b></span><span class="tab-copy"><small>05 / MACHINE LEARNING</small><strong>Movie Recommendation</strong></span><span class="tab-arrow">↗</span></button><button class="project-tab" type="button" data-slide="5" role="tab" aria-selected="false" aria-label="Show AI Job Role Matching"><span class="tab-preview tab-preview-6"><i></i><b></b></span><span class="tab-copy"><small>06 / NLP · MATCHING</small><strong>AI Job Role Matching</strong></span><span class="tab-arrow">↗</span></button></div><div class="rail-footer"><span class="rail-live-dot"></span><span>06 LIVE CASE STUDIES</span></div></aside><div class="showcase-main"><div class="showcase-topline"><div class="showcase-meta-tag" id="showcase-category">SPEECH AI · NLP</div><div class="showcase-swipe-hint">SWIPE ⇆ DRAG OR CLICK ARROWS</div></div><div class="showcase-viewport" id="showcaseViewport"><div class="showcase-track"><article class="project showcase-slide is-active" aria-hidden="false" data-kind="genai"><div class="project-art scene-audio"><div class="scene-label">LIVE AUDIO / 16 KHZ</div><div class="project-body"><div class="waveform"><i style="--h:18px;--d:0s"></i><i style="--h:69px;--d:-0.13s"></i><i style="--h:88px;--d:-0.26s"></i><i style="--h:62px;--d:-0.39s"></i><i style="--h:28px;--d:-0.52s"></i><i style="--h:75px;--d:-0.65s"></i><i style="--h:86px;--d:-0.78s"></i><i style="--h:54px;--d:0s"></i><i style="--h:37px;--d:-0.13s"></i><i style="--h:80px;--d:-0.26s"></i><i style="--h:84px;--d:-0.39s"></i><i style="--h:46px;--d:-0.52s"></i><i style="--h:46px;--d:-0.65s"></i><i style="--h:84px;--d:-0.78s"></i><i style="--h:80px;--d:0s"></i><i style="--h:36px;--d:-0.13s"></i><i style="--h:55px;--d:-0.26s"></i><i style="--h:87px;--d:-0.39s"></i><i style="--h:75px;--d:-0.52s"></i><i style="--h:27px;--d:-0.65s"></i><i style="--h:63px;--d:-0.78s"></i><i style="--h:88px;--d:0s"></i><i style="--h:69px;--d:-0.13s"></i><i style="--h:19px;--d:-0.26s"></i><i style="--h:70px;--d:-0.39s"></i><i style="--h:88px;--d:-0.52s"></i><i style="--h:62px;--d:-0.65s"></i><i style="--h:28px;--d:-0.78s"></i><i style="--h:76px;--d:0s"></i><i style="--h:86px;--d:-0.13s"></i><i style="--h:54px;--d:-0.26s"></i><i style="--h:38px;--d:-0.39s"></i></div><div class="scene-orbit"></div><span class="scene-chip">TAB + MIC</span></div></div><div class="project-meta-row"><span>01 / 06 · SPEECH AI</span><span>ACTIVE BUILD</span></div><h3>Meet Live Transcription</h3><div class="project-what-it-does"><span class="what-badge">WHAT IT DOES</span><p>Chrome extension workflow for live Google Meet tab and microphone capture, real-time 16 kHz PCM audio streaming via AudioWorklet, and bidirectional WebSocket pipelines for fast multilingual speech transcription.</p></div><div class="tags"><span>Chrome Extension</span><span>AudioWorklet</span><span>FastAPI</span><span>WebSockets</span></div><a class="project-link" href="https://github.com/shreyasharma76" target="_blank" rel="noreferrer"><span>Explore repository code</span> <i>↗</i></a></article><article class="project showcase-slide" aria-hidden="true" data-kind="ai"><div class="project-art scene-health"><div class="scene-label">HEALTH INTELLIGENCE</div><div class="project-body"><div class="scan-ring"><i></i><b></b><em></em></div><div class="scan-data"><span>VISION ANALYSIS</span><strong>AI / ML</strong><small>MODEL WORKFLOWS</small></div></div></div><div class="project-meta-row"><span>02 / 06 · HEALTH-TECH AI</span><span>ACTIVE BUILD</span></div><h3>HealNova AI Workflows</h3><div class="project-what-it-does"><span class="what-badge">WHAT IT DOES</span><p>Multi-modal health platform driving facial and eye health assessment, skin anomaly classification, nutritional comparison, prescription scanning, Vitamin Model integration, and predictive menstrual health tracking.</p></div><div class="tags"><span>Python</span><span>FastAPI</span><span>AWS Lambda</span><span>Prisma</span></div><a class="project-link" href="https://github.com/shreyasharma76" target="_blank" rel="noreferrer"><span>Explore repository code</span> <i>↗</i></a></article><article class="project showcase-slide" aria-hidden="true" data-kind="backend"><div class="project-art scene-network"><div class="scene-label">PERSONALIZATION ENGINE</div><div class="project-body"><svg viewBox="0 0 360 150" role="img" aria-label="Connected recommendation nodes"><g stroke="#d2ff00" stroke-opacity=".55" stroke-width="1.5"><path d="M40 76L120 35L190 70L280 25M40 76L120 115L190 70L280 120M190 70L320 73M120 35L280 120M120 115L280 25"/></g><g fill="#d2ff00"><circle cx="40" cy="76" r="7"/><circle cx="120" cy="35" r="6"/><circle cx="120" cy="115" r="6"/><circle cx="190" cy="70" r="11"/><circle cx="280" cy="25" r="6"/><circle cx="280" cy="120" r="6"/><circle cx="320" cy="73" r="7"/></g></svg><span class="scene-chip">RANK · CACHE · SUPPRESS</span></div></div><div class="project-meta-row"><span>03 / 06 · RECOMMENDATIONS</span><span>ACTIVE BUILD</span></div><h3>Notification Recommendation</h3><div class="project-what-it-does"><span class="what-badge">WHAT IT DOES</span><p>Personalized notification engine that ranks, filters, and delivers targeted alerts using user affinity modeling, frequency suppression rules, and multi-tier Redis caching with sub-50ms latency.</p></div><div class="tags"><span>Node.js</span><span>BytePlus Recommend</span><span>Redis</span><span>PostgreSQL</span></div><a class="project-link" href="https://github.com/shreyasharma76" target="_blank" rel="noreferrer"><span>Explore repository code</span> <i>↗</i></a></article><article class="project showcase-slide" aria-hidden="true" data-kind="backend"><div class="project-art scene-cube"><div class="scene-label">3D WEB BUILDER / CREDIT SYSTEM</div><div class="project-body"><div class="iso-cube"><i></i><b></b><em></em></div><div class="cube-orbit"></div><span class="scene-chip">AUTH + PREPAID CREDITS</span></div></div><div class="project-meta-row"><span>04 / 06 · AI WEB PRODUCT</span><span>ACTIVE BUILD</span></div><h3>Xelta 3D Website Builder</h3><div class="project-what-it-does"><span class="what-badge">WHAT IT DOES</span><p>AI-assisted 3D website design suite featuring secure user authentication, prepaid tokenization, persistent wallet tracking, and automated model compute provisioning.</p></div><div class="tags"><span>Node.js</span><span>REST APIs</span><span>Database</span><span>Three.js</span></div><a class="project-link" href="https://github.com/shreyasharma76" target="_blank" rel="noreferrer"><span>Explore repository code</span> <i>↗</i></a></article><article class="project showcase-slide" aria-hidden="true" data-kind="ai"><div class="project-art scene-movie"><div class="scene-label">CONTENT DISCOVERY</div><div class="project-body"><div class="film-stack"><i>01</i><i>02</i><i>03</i><i>04</i></div><div class="scene-chip">SIMILARITY / RANKING</div></div></div><div class="project-meta-row"><span>05 / 06 · MACHINE LEARNING</span><span>ACTIVE BUILD</span></div><h3>Movie Recommendation</h3><div class="project-what-it-does"><span class="what-badge">WHAT IT DOES</span><p>Personalized cinema discovery engine combining content-based TF-IDF similarity vectors and collaborative filtering to deliver tailored movie recommendations based on user watching habits.</p></div><div class="tags"><span>Python</span><span>Pandas</span><span>Scikit-learn</span><span>TF-IDF</span></div><a class="project-link" href="https://github.com/shreyasharma76" target="_blank" rel="noreferrer"><span>Explore repository code</span> <i>↗</i></a></article><article class="project showcase-slide" aria-hidden="true" data-kind="ai"><div class="project-art scene-match"><div class="scene-label">ROLE MATCHING / NLP</div><div class="project-body"><div class="match-graph"><i></i><i></i><i></i><b></b><em></em></div><div class="scene-chip">PROFILE ↔ ROLE</div></div></div><div class="project-meta-row"><span>06 / 06 · NLP & MATCHING</span><span>ACTIVE BUILD</span></div><h3>AI Job Role Matching</h3><div class="project-what-it-does"><span class="what-badge">WHAT IT DOES</span><p>NLP candidate-to-role matching pipeline that extracts skills, qualifications, and domain experience from resumes to calculate high-precision semantic fit scores.</p></div><div class="tags"><span>Python</span><span>NLP</span><span>Cosine Similarity</span><span>Feature Extraction</span></div><a class="project-link" href="https://github.com/shreyasharma76" target="_blank" rel="noreferrer"><span>Explore repository code</span> <i>↗</i></a></article></div></div><div class="showcase-controls"><div class="showcase-progress" title="Time remaining before next slide"><span id="showcase-progress"></span></div><div class="showcase-control-row"><div class="showcase-dots" id="showcase-dots"><button type="button" class="dot-btn active" data-slide="0" aria-label="Go to project 1"></button><button type="button" class="dot-btn" data-slide="1" aria-label="Go to project 2"></button><button type="button" class="dot-btn" data-slide="2" aria-label="Go to project 3"></button><button type="button" class="dot-btn" data-slide="3" aria-label="Go to project 4"></button><button type="button" class="dot-btn" data-slide="4" aria-label="Go to project 5"></button><button type="button" class="dot-btn" data-slide="5" aria-label="Go to project 6"></button></div><div class="showcase-buttons"><button type="button" id="project-prev" aria-label="Previous project">←</button><button type="button" id="project-next" aria-label="Next project">→</button></div></div></div></div></div></div><div class="laptop-base" aria-hidden="true"></div><div class="laptop-shadow" aria-hidden="true"></div></div></div></div></section>
 <section class="skills" id="skills"><div class="wrap"><div class="section-head"><div><div class="eyebrow">03 / TOOLKIT</div><h2>Tools of the <em>trade</em></h2></div><p class="section-note">The technologies I've worked with across AI, model workflows, backend development and deployment.</p></div><div class="skill-layout"><p class="skill-copy">I work across the application stack—from preparing data and evaluating models to integrating AI capabilities into APIs, services and user-facing products. I keep learning tools that help make systems more useful and reliable.</p><div class="skill-cloud"><span class="skill-chip">Python</span><span class="skill-chip">SQL</span><span class="skill-chip">JavaScript</span><span class="skill-chip">Scikit-learn</span><span class="skill-chip">TensorFlow</span><span class="skill-chip">PyTorch</span><span class="skill-chip">Pandas</span><span class="skill-chip">NumPy</span><span class="skill-chip">Transformers</span><span class="skill-chip">Whisper</span><span class="skill-chip">RAG</span><span class="skill-chip">FastAPI</span><span class="skill-chip">Flask</span><span class="skill-chip">Node.js</span><span class="skill-chip">WebSockets</span><span class="skill-chip">PostgreSQL</span><span class="skill-chip">MongoDB</span><span class="skill-chip">Redis</span><span class="skill-chip">Prisma</span><span class="skill-chip">AWS Lambda</span><span class="skill-chip">Docker</span><span class="skill-chip">Git</span><span class="skill-chip">Power BI</span></div></div></div></section>
 <section id="about"><div class="wrap"><div class="section-head"><div><div class="eyebrow">04 / A LITTLE ABOUT ME</div><h2>Curious by nature.<br><em>Builder by choice.</em></h2></div></div><div class="about-grid"><div class="about-copy">I'm an AI/ML and backend developer who enjoys solving practical problems with technology. My experience spans <strong>machine learning workflows, health-tech AI, speech processing, recommendation systems and backend integrations.</strong> I like understanding how the pieces connect—and making sure the final feature works beyond a demo.</div><div><div class="about-panel"><h3>Beyond the code</h3><p>I value thoughtful engineering, clear communication, continuous learning and building things that make a real difference to the people using them.</p></div><div class="education"><div class="edu"><div class="eyebrow">2023 — 2025</div><h4>MCA · K.R. Mangalam University</h4><p>Gurugram, India</p></div><div class="edu"><div class="eyebrow">2020 — 2023</div><h4>B.Sc. · Sri Dev Suman Uttarakhand University</h4><p>Uttarakhand, India</p></div></div></div></div></div></section>
 <section class="contact" id="contact"><div class="wrap contact-inner"><div><div class="eyebrow">05 / NEXT CHAPTER</div><h2>Let's make<br><span>something matter.</span></h2><p>Open to AI/ML engineering, Python backend and AI product opportunities.</p><a class="btn primary" href="mailto:shreyakaushal9760@gmail.com">Start a conversation ↗</a></div><div class="contact-card"><div class="contact-row"><div class="mono">EMAIL</div><a href="mailto:shreyakaushal9760@gmail.com">shreyakaushal9760@gmail.com</a></div><div class="contact-row"><div class="mono">LOCATION</div>Gurugram, India</div><div class="contact-row"><div class="mono">PROFILES</div><a href="https://github.com/shreyasharma76" target="_blank" rel="noreferrer">GitHub</a> · <a href="https://www.linkedin.com/in/shreya-sharma-323b8b282/" target="_blank" rel="noreferrer">LinkedIn</a></div></div></div></section>
@@ -349,8 +439,175 @@ const menu=document.getElementById('menu'),nav=document.getElementById('navlinks
 document.getElementById('year').textContent=new Date().getFullYear();
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('show');io.unobserve(e.target);}}),{threshold:.12});document.querySelectorAll('.reveal').forEach(x=>io.observe(x));
 
-// Projects carousel: reveal rail on scroll, auto-advance every 3s, loop, and support manual navigation.
-(()=>{const root=document.getElementById('projects'),track=document.querySelector('.showcase-track'),slides=[...document.querySelectorAll('.showcase-slide')],tabs=[...document.querySelectorAll('.project-tab')],current=document.getElementById('showcase-current'),category=document.getElementById('showcase-category'),bar=document.getElementById('showcase-progress'),prev=document.getElementById('project-prev'),next=document.getElementById('project-next');if(!root||!track||!slides.length)return;let index=0,timer=null,entered=false,startX=0,dragging=false;const categories=["SPEECH AI · NLP","HEALTH-TECH AI","RECOMMENDATION SYSTEMS","AI WEB PRODUCT","MACHINE LEARNING","NLP · MATCHING"];function paint(){track.style.transform='translate3d(-'+(index*100)+'%,0,0)';slides.forEach((el,i)=>{el.setAttribute('aria-hidden',String(i!==index));el.classList.toggle('is-active',i===index);});tabs.forEach((el,i)=>{el.classList.toggle('active',i===index);el.setAttribute('aria-pressed',String(i===index));});current.textContent=String(index+1).padStart(2,'0');category.textContent=categories[index];bar.classList.remove('running');void bar.offsetWidth;bar.classList.add('running');}function go(n,manual=false){index=(n+slides.length)%slides.length;paint();if(manual)restart();}function stop(){if(timer)clearInterval(timer);timer=null;}function restart(){stop();if(!document.hidden&&!matchMedia('(prefers-reduced-motion: reduce)').matches)timer=setInterval(()=>go(index+1),3000);}function enter(){if(entered)return;entered=true;root.classList.add('showcase-entered');paint();restart();}const observer=new IntersectionObserver(es=>{if(es.some(e=>e.isIntersecting)){enter();observer.disconnect();}},{threshold:.12});observer.observe(root);tabs.forEach((b,i)=>b.addEventListener('click',()=>go(i,true)));prev.addEventListener('click',()=>go(index-1,true));next.addEventListener('click',()=>go(index+1,true));root.addEventListener('mouseenter',()=>{});root.addEventListener('focusin',()=>{});document.addEventListener('visibilitychange',()=>document.hidden?stop():restart());root.addEventListener('keydown',e=>{if(e.key==='ArrowRight'){e.preventDefault();go(index+1,true)}if(e.key==='ArrowLeft'){e.preventDefault();go(index-1,true)}});const viewport=root.querySelector('.showcase-viewport');viewport.addEventListener('touchstart',e=>{startX=e.changedTouches[0].clientX;},{passive:true});viewport.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-startX;if(Math.abs(dx)>45)go(index+(dx<0?1:-1),true);},{passive:true});viewport.addEventListener('pointerdown',e=>{if(e.pointerType==='mouse'){startX=e.clientX;dragging=true;}});viewport.addEventListener('pointerup',e=>{if(!dragging)return;dragging=false;const dx=e.clientX-startX;if(Math.abs(dx)>55)go(index+(dx<0?1:-1),true);});viewport.addEventListener('pointercancel',()=>dragging=false);})();
+// Projects carousel: 3D Laptop entrance on scroll, 3s auto-advance with loop, drag/swipe gestures & tab sync
+(()=>{
+  const root=document.getElementById('projects');
+  if(!root)return;
+  const track=root.querySelector('.showcase-track'),
+        slides=[...root.querySelectorAll('.showcase-slide')],
+        tabs=[...root.querySelectorAll('.project-tab')],
+        dots=[...root.querySelectorAll('.dot-btn')],
+        current=document.getElementById('showcase-current'),
+        chromeCounter=document.getElementById('chrome-counter'),
+        category=document.getElementById('showcase-category'),
+        bar=document.getElementById('showcase-progress'),
+        prev=document.getElementById('project-prev'),
+        next=document.getElementById('project-next'),
+        laptop=document.getElementById('laptopDevice'),
+        viewport=document.getElementById('showcaseViewport');
+
+  if(!track||!slides.length)return;
+
+  let index=0,
+      timer=null,
+      entered=false,
+      startX=0,
+      startY=0,
+      dragging=false,
+      isPaused=false;
+
+  const categories=[
+    "SPEECH AI · NLP",
+    "HEALTH-TECH AI",
+    "RECOMMENDATION SYSTEMS",
+    "AI WEB PRODUCT",
+    "MACHINE LEARNING",
+    "NLP · MATCHING"
+  ];
+
+  function paint(){
+    track.style.transform='translate3d(-'+(index*100)+'%,0,0)';
+    slides.forEach((el,i)=>{
+      const active=i===index;
+      el.setAttribute('aria-hidden',String(!active));
+      el.classList.toggle('is-active',active);
+    });
+    tabs.forEach((el,i)=>{
+      const active=i===index;
+      el.classList.toggle('active',active);
+      el.setAttribute('aria-selected',String(active));
+      if(active && window.innerWidth<=640){
+        try{el.scrollIntoView({behavior:'smooth',block:'nearest',inline:'center'});}catch(e){}
+      }
+    });
+    dots.forEach((el,i)=>{
+      el.classList.toggle('active',i===index);
+    });
+    const numStr=String(index+1).padStart(2,'0');
+    if(current)current.textContent=numStr;
+    if(chromeCounter)chromeCounter.textContent=numStr;
+    if(category)category.textContent=categories[index]||"AI / ML PROJECT";
+
+    if(bar){
+      bar.classList.remove('running');
+      void bar.offsetWidth;
+      if(!isPaused)bar.classList.add('running');
+    }
+  }
+
+  function go(n,manual=false){
+    index=(n+slides.length)%slides.length;
+    paint();
+    if(manual)restart();
+  }
+
+  function stop(){
+    if(timer)clearInterval(timer);
+    timer=null;
+    if(bar)bar.classList.remove('running');
+  }
+
+  function restart(){
+    stop();
+    if(!document.hidden&&!matchMedia('(prefers-reduced-motion: reduce)').matches&&!isPaused){
+      if(bar)bar.classList.add('running');
+      timer=setInterval(()=>go(index+1),3000);
+    }
+  }
+
+  function enter(){
+    if(entered)return;
+    entered=true;
+    root.classList.add('showcase-entered');
+    paint();
+    restart();
+  }
+
+  const observer=new IntersectionObserver((entries)=>{
+    if(entries.some(e=>e.isIntersecting)){
+      enter();
+      observer.disconnect();
+    }
+  },{threshold:0.12});
+  observer.observe(root);
+
+  tabs.forEach((btn,i)=>btn.addEventListener('click',()=>go(i,true)));
+  dots.forEach((dot,i)=>dot.addEventListener('click',()=>go(i,true)));
+  if(prev)prev.addEventListener('click',()=>go(index-1,true));
+  if(next)next.addEventListener('click',()=>go(index+1,true));
+
+  root.addEventListener('keydown',(e)=>{
+    if(e.key==='ArrowRight'){e.preventDefault();go(index+1,true);}
+    if(e.key==='ArrowLeft'){e.preventDefault();go(index-1,true);}
+  });
+
+  const pauseArea=laptop||root;
+  pauseArea.addEventListener('mouseenter',()=>{
+    isPaused=true;
+    stop();
+  });
+  pauseArea.addEventListener('mouseleave',()=>{
+    isPaused=false;
+    restart();
+  });
+
+  if(viewport){
+    viewport.addEventListener('touchstart',(e)=>{
+      startX=e.changedTouches[0].clientX;
+      startY=e.changedTouches[0].clientY;
+      stop();
+    },{passive:true});
+
+    viewport.addEventListener('touchend',(e)=>{
+      const dx=e.changedTouches[0].clientX-startX;
+      const dy=e.changedTouches[0].clientY-startY;
+      if(Math.abs(dx)>35&&Math.abs(dx)>Math.abs(dy)){
+        go(index+(dx<0?1:-1),true);
+      }else{
+        restart();
+      }
+    },{passive:true});
+
+    viewport.addEventListener('pointerdown',(e)=>{
+      if(e.pointerType==='mouse'){
+        startX=e.clientX;
+        dragging=true;
+        stop();
+      }
+    });
+
+    viewport.addEventListener('pointerup',(e)=>{
+      if(!dragging)return;
+      dragging=false;
+      const dx=e.clientX-startX;
+      if(Math.abs(dx)>45){
+        go(index+(dx<0?1:-1),true);
+      }else{
+        restart();
+      }
+    });
+
+    viewport.addEventListener('pointercancel',()=>{
+      dragging=false;
+      restart();
+    });
+  }
+
+  document.addEventListener('visibilitychange',()=>{
+    if(document.hidden)stop();
+    else if(!isPaused)restart();
+  });
+})();
 const progress=document.getElementById('progress'),back=document.getElementById('backtop');addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(scrollY/Math.max(max,1)*100)+'%';back.classList.toggle('show',scrollY>500);},{passive:true});
 const sections=[...document.querySelectorAll('main section[id]')],links=[...nav.querySelectorAll('a')];const navIO=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)links.forEach(a=>a.classList.toggle('active',a.getAttribute('href')==='#'+e.target.id));}),{rootMargin:'-35% 0px -55% 0px'});sections.forEach(s=>navIO.observe(s));
 // Tilt cards in a restrained way to preserve legibility.
