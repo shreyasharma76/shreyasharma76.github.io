@@ -167,7 +167,7 @@ header{background:#11130f!important;color:#f4f1e8!important;border-bottom:1px so
 .portrait-frame{width:min(410px,72%);height:94%;right:19%;bottom:0;border:0;background:transparent;overflow:visible;transform:translateZ(35px) rotateY(-9deg) rotateZ(1deg);box-shadow:none;isolation:isolate;animation:portraitHover 7s ease-in-out infinite}
 .portrait-frame:before{content:"";position:absolute;z-index:-1;inset:16% -10% 4%;border-radius:48%;background:radial-gradient(ellipse,#c9ff0040 0%,#ff8a2426 42%,transparent 72%);filter:blur(35px);transform:translateZ(-40px)}
 .portrait-frame:after{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(120deg,#ffffff16,transparent 28%,transparent 72%,#ffb15c12);mix-blend-mode:screen;pointer-events:none}
-.portrait-frame img{position:relative;z-index:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:none!important;mix-blend-mode:normal;image-rendering:auto;transform:translateZ(12px);drop-shadow:0 28px 34px #0009}
+.portrait-frame img{position:relative;z-index:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:none!important;mix-blend-mode:normal;image-rendering:auto;transform:translateZ(12px);filter:drop-shadow(0 28px 34px #0009)!important}
 .portrait-caption{display:none}
 .focus-card{right:-1%;top:12%;width:220px;transform:translateZ(105px) rotateY(-10deg) rotateX(3deg);box-shadow:18px 25px 65px #000b,0 0 0 1px #ff9a3a26,inset 0 1px #ffffff12}
 .orbit-art{right:0;top:0;transform:translateZ(60px);filter:drop-shadow(0 0 22px #ff8a2440)}
