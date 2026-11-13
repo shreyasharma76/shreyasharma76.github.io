@@ -175,6 +175,31 @@ header{background:#11130f!important;color:#f4f1e8!important;border-bottom:1px so
 @keyframes portraitHover{0%,100%{transform:translate3d(0,0,35px) rotateY(-9deg) rotateZ(1deg)}50%{transform:translate3d(0,-13px,55px) rotateY(-5deg) rotateZ(0deg)}}
 @media(max-width:850px){.wrap{width:calc(100% - 38px)}.hero{padding-top:115px}.hero-grid{grid-template-columns:1fr;gap:8px}.hero-art{height:490px;min-height:420px}.portrait-frame{width:min(330px,68%);right:24%}.focus-card{right:0;top:8%;width:190px}.hero h1{font-size:clamp(4rem,14vw,6rem)}}
 @media(max-width:520px){.hero-art{height:420px;min-height:390px}.portrait-frame{width:78%;right:13%}.focus-card{width:165px;padding:13px;top:2%;right:-5px}.focus-card p{font-size:.72rem}.hero h1{font-size:clamp(3.5rem,15vw,5rem)}}
+
+/* PROJECT GRID: uniform cards; illustration is a contained visual, never a second content panel */
+.project-grid{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;align-items:stretch!important;gap:28px!important}
+.project{display:grid!important;grid-template-rows:220px auto auto minmax(74px,1fr) auto auto!important;align-content:stretch!important;min-height:590px!important;height:100%!important;padding:0!important;overflow:hidden!important;border-radius:3px!important;background:linear-gradient(145deg,#20241c,#121410 76%)!important;border:1px solid #d2ff0038!important;box-shadow:0 15px 35px #0005!important}
+.project-art{height:220px!important;min-height:220px!important;max-height:220px!important;flex:none!important;margin:0!important;width:100%!important;position:relative!important;overflow:hidden!important;display:grid!important;place-items:center!important;border-bottom:1px solid #d2ff0033!important}
+.project-art .project-body{position:relative!important;inset:auto!important;display:flex!important;align-items:center!important;justify-content:center!important;flex-direction:column!important;gap:12px!important;width:100%!important;height:100%!important;min-height:0!important;flex:none!important;padding:22px 24px!important;margin:0!important;background:transparent!important;color:inherit!important;overflow:hidden!important}
+.project-art .scene-label{position:absolute!important;left:22px!important;top:18px!important;z-index:2!important;color:#d2ff00!important;font:10px 'DM Mono',monospace!important;letter-spacing:.14em!important}
+.project-art .scene-chip{position:relative!important;z-index:2!important;display:inline-flex!important;padding:7px 11px!important;border:1px solid #d2ff0077!important;background:#11170dcc!important;color:#d2ff00!important;font:9px 'DM Mono',monospace!important;letter-spacing:.1em!important}
+.project-art .waveform{height:100px!important;display:flex!important;align-items:center!important;justify-content:center!important;gap:5px!important;max-width:85%!important}
+.project-art .waveform i{width:5px!important;height:var(--h)!important;max-height:90px!important;border-radius:5px!important;background:linear-gradient(#f5ff9a,#d2ff00 60%,#7eaa00)!important;box-shadow:0 0 12px #d2ff0080!important;animation:wavePulse 1.2s ease-in-out infinite alternate!important;animation-delay:var(--d)!important}
+@keyframes wavePulse{to{transform:scaleY(.45);opacity:.65}}
+.project-art svg{width:min(78%,390px)!important;height:auto!important;filter:drop-shadow(0 0 14px #d2ff0060)!important}
+.project-art .scan-ring{transform:scale(1.2)!important;filter:drop-shadow(0 0 16px #d2ff0080)!important}
+.project-art .iso-cube{transform:scale(1.25)!important;filter:drop-shadow(0 15px 20px #0009)!important}
+.project-meta{padding:22px 26px 0!important;align-self:end!important}
+.project h3{padding:0 26px!important;margin:12px 0 8px!important;font-size:clamp(1.45rem,2vw,1.8rem)!important;line-height:1.15!important}
+.project>p{padding:0 26px!important;margin:0!important;color:#c3c8b9!important;font-size:.9rem!important;line-height:1.7!important;min-height:74px!important}
+.project>.tags{padding:18px 26px 0!important;margin:0!important;align-self:start!important}
+.project>.project-link{margin:22px 26px 24px!important;padding:14px 0 0!important;border-top:1px solid #ffffff20!important;color:#ff9b45!important}
+.project:hover{transform:translateY(-8px) rotateX(1.5deg)!important;border-color:#d2ff00!important;box-shadow:0 28px 65px #0009,0 0 0 1px #d2ff0033!important}
+@media(max-width:760px){.project-grid{grid-template-columns:1fr!important;gap:20px!important}.project{min-height:560px!important;grid-template-rows:200px auto auto minmax(65px,1fr) auto auto!important}.project-art{height:200px!important;min-height:200px!important;max-height:200px!important}}
+/* Preserve the original face and transparency; render the subject as a sharp contained cutout */
+.portrait-frame{overflow:visible!important;background:transparent!important;border:0!important;box-shadow:none!important}
+.portrait-frame img{object-fit:contain!important;object-position:center bottom!important;filter:drop-shadow(0 26px 32px #000b)!important;mix-blend-mode:normal!important}
+.portrait-frame:after{display:none!important}
 </style></head>
 <body>
 <div id="progress"></div>
