@@ -27,6 +27,20 @@
     @media(max-width:500px){.wrap{width:min(100% - 30px,var(--max))}.skill-grid,.education,.facts{grid-template-columns:1fr}.panel{padding:22px}.hero{min-height:auto}.float.one{right:-5px}.float.two{left:-5px}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.reveal{opacity:1;transform:none;transition:none}*{animation:none!important;transition:none!important}}
   </style>
+
+  <style>
+    /* 3D portfolio layer */
+    body{overflow-x:hidden}
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.18;background-image:linear-gradient(rgba(139,128,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(139,128,255,.12) 1px,transparent 1px);background-size:58px 58px;mask-image:linear-gradient(to bottom,black,transparent 75%);transform:perspective(700px) rotateX(58deg) scale(1.8);transform-origin:top center}
+    .hero{position:relative;isolation:isolate}.hero:after{content:"";position:absolute;width:500px;height:500px;right:-12%;top:5%;z-index:-1;border-radius:50%;background:radial-gradient(circle,rgba(114,91,255,.16),rgba(58,203,223,.06) 42%,transparent 70%);filter:blur(12px);animation:pulseGlow 7s ease-in-out infinite alternate}
+    @keyframes pulseGlow{to{transform:scale(1.18);opacity:.65}}
+    .visual{perspective:1100px;transform-style:preserve-3d}.orb{position:relative;transform-style:preserve-3d;animation:orbFloat 7s ease-in-out infinite;box-shadow:0 0 80px rgba(112,94,220,.2),inset 0 0 50px rgba(112,94,220,.12)}.orb:before,.orb:after{content:"";position:absolute;inset:-23px;border:1px solid rgba(124,219,235,.28);border-radius:50%;transform:rotateX(68deg) rotateZ(-24deg);box-shadow:0 0 24px rgba(101,217,232,.12)}.orb:after{inset:-45px;border-color:rgba(155,140,255,.22);transform:rotateX(72deg) rotateZ(35deg);animation:ringSpin 18s linear infinite}.monogram{transform:translateZ(55px);text-shadow:0 8px 0 rgba(87,74,161,.45),0 18px 35px rgba(155,140,255,.5)}@keyframes orbFloat{0%,100%{transform:translateY(0) rotateY(-9deg) rotateX(5deg)}50%{transform:translateY(-17px) rotateY(9deg) rotateX(-4deg)}}@keyframes ringSpin{to{transform:rotateX(72deg) rotateZ(395deg)}}
+    #hero3d{position:absolute;inset:-12%;width:124%;height:124%;z-index:-1;pointer-events:none}.visual .float{z-index:2;backdrop-filter:blur(14px);transform:translateZ(70px);animation:floatBadge 5s ease-in-out infinite}.visual .float.two{animation-delay:-1.7s}.visual .float.three{animation-delay:-3s}@keyframes floatBadge{50%{translate:0 -10px}}
+    .panel,.skill,.project,.edu,.contact-card{transform-style:preserve-3d;transition:transform .35s ease,border-color .35s ease,box-shadow .35s ease;box-shadow:0 18px 50px rgba(0,0,0,.16)}.panel:hover,.skill:hover,.project:hover,.edu:hover,.contact-card:hover{border-color:rgba(151,137,255,.48);box-shadow:0 25px 65px rgba(0,0,0,.32),0 0 28px rgba(117,102,255,.1)}.skill:hover,.project:hover,.edu:hover{transform:perspective(900px) rotateX(3deg) rotateY(-3deg) translateY(-7px)}.project{background:linear-gradient(145deg,rgba(30,39,63,.94),rgba(12,17,29,.97));min-height:270px}.project:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,transparent 25%,rgba(255,255,255,.045) 45%,transparent 65%);transform:translateX(-120%);transition:transform .8s ease}.project:hover:after{transform:translateX(120%)}.project>*{position:relative;z-index:1}.tag{transition:transform .25s ease,border-color .25s ease}.tag:hover{transform:translateY(-3px);border-color:rgba(101,217,232,.45)}
+    .nav{box-shadow:0 10px 35px rgba(0,0,0,.18)}.btn{box-shadow:0 8px 25px rgba(0,0,0,.18)}.btn.primary{box-shadow:0 8px 30px rgba(117,102,255,.2)}
+    @media(max-width:800px){.visual{overflow:hidden}.orb:after{inset:-30px}#hero3d{inset:0;width:100%;height:100%}}
+    @media(prefers-reduced-motion:reduce){.orb,.orb:after,.visual .float,.hero:after{animation:none!important}}
+  </style>
 </head>
 <body>
 <header class="nav">
@@ -57,7 +71,7 @@
           <a href="mailto:shreyakaushal9760@gmail.com">Email ↗</a>
         </div>
       </div>
-      <div class="visual" aria-label="Shreya monogram illustration">
+      <div class="visual" id="heroVisual" aria-label="Animated 3D AI-inspired illustration"><canvas id="hero3d" aria-hidden="true"></canvas>
         <div class="orb"><div class="monogram">S.</div></div>
         <div class="float one">Python · AI/ML</div>
         <div class="float two">FastAPI · Backend</div>
@@ -156,6 +170,8 @@
   </section>
 </main>
 <footer><div class="wrap"><span>© <span id="year"></span> Shreya Sharma. Built with care.</span><span>AI/ML Engineer · Python Backend Developer</span></div></footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r152/three.min.js" defer></script>
 <script>
   const menuBtn=document.getElementById('menuBtn');
   const navLinks=document.getElementById('navLinks');
@@ -163,7 +179,43 @@
   navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open');menuBtn.setAttribute('aria-expanded','false');}));
   document.getElementById('year').textContent=new Date().getFullYear();
   const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}}),{threshold:.12});
+
   document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+
+  // Lightweight Three.js particle field and rotating geometric core.
+  // If WebGL is unavailable, the CSS orb remains as a graceful fallback.
+  window.addEventListener('load',()=>{
+    const canvas=document.getElementById('hero3d'), host=document.getElementById('heroVisual');
+    if(!canvas||!host||!window.THREE)return;
+    try{
+      const scene=new THREE.Scene();
+      const camera=new THREE.PerspectiveCamera(42,1,.1,100);
+      camera.position.z=7;
+      const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
+      const group=new THREE.Group();scene.add(group);
+      const core=new THREE.Mesh(new THREE.IcosahedronGeometry(1.18,2),new THREE.MeshBasicMaterial({color:0x9b8cff,wireframe:true,transparent:true,opacity:.42}));
+      group.add(core);
+      const inner=new THREE.Mesh(new THREE.IcosahedronGeometry(.78,1),new THREE.MeshBasicMaterial({color:0x65d9e8,wireframe:true,transparent:true,opacity:.24}));
+      group.add(inner);
+      const ringA=new THREE.Mesh(new THREE.TorusGeometry(1.65,.009,8,180),new THREE.MeshBasicMaterial({color:0x65d9e8,transparent:true,opacity:.48}));
+      ringA.rotation.set(1.05,.3,.2);group.add(ringA);
+      const ringB=new THREE.Mesh(new THREE.TorusGeometry(2,.006,8,180),new THREE.MeshBasicMaterial({color:0x9b8cff,transparent:true,opacity:.35}));
+      ringB.rotation.set(.5,1.1,-.4);group.add(ringB);
+      const count=700, positions=new Float32Array(count*3);
+      for(let i=0;i<count;i++){const r=2.1+Math.random()*2.8,a=Math.random()*Math.PI*2,b=Math.acos(2*Math.random()-1);positions[i*3]=r*Math.sin(b)*Math.cos(a);positions[i*3+1]=r*Math.sin(b)*Math.sin(a);positions[i*3+2]=r*Math.cos(b);}
+      const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.BufferAttribute(positions,3));
+      const stars=new THREE.Points(geo,new THREE.PointsMaterial({color:0x9eafff,size:.018,transparent:true,opacity:.72}));scene.add(stars);
+      let mx=0,my=0,tx=0,ty=0;
+      host.addEventListener('pointermove',e=>{const r=host.getBoundingClientRect();tx=((e.clientX-r.left)/r.width-.5)*.5;ty=((e.clientY-r.top)/r.height-.5)*.5;},{passive:true});
+      host.addEventListener('pointerleave',()=>{tx=0;ty=0;},{passive:true});
+      function resize(){const w=host.clientWidth,h=host.clientHeight;renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
+      resize();new ResizeObserver(resize).observe(host);
+      const reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function animate(){if(!reduced)requestAnimationFrame(animate);mx+=(tx-mx)*.035;my+=(ty-my)*.035;group.rotation.y+=reduced?0:.0025;group.rotation.x+=reduced?0:.0012;group.rotation.y+=mx*.018;group.rotation.x+=my*.018;stars.rotation.y+=reduced?0:.00035;renderer.render(scene,camera);}
+      animate();
+    }catch(err){console.warn('3D scene unavailable; CSS fallback active.',err);}
+  });
 </script>
 </body>
 </html>
