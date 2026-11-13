@@ -153,6 +153,28 @@ header{background:#11130f!important;color:#f4f1e8!important;border-bottom:1px so
 #journey .milestone p{color:#c4c8b9!important;line-height:1.75!important}
 #journey .mile-tags span{border:1px solid #d2ff0055!important;background:#20271a!important;color:#d2ff00!important}
 @media(max-width:700px){#journey .timeline{padding-left:34px!important}#journey .milestone,#journey .milestone:nth-child(even){transform:none!important;margin-bottom:24px!important;padding:23px!important}#journey .milestone:before{left:-43px!important}#journey .mile-date{display:block;margin-top:8px}.project-art{flex-basis:200px!important;height:200px!important}.project-body{padding:21px!important}}
+
+/* PORTRAIT-SAFE 3D HERO POLISH — keep the original portrait pixels and facial features untouched */
+:root{--max:1440px}
+.wrap{width:min(var(--max),calc(100% - 8vw))}
+.hero{min-height:820px;padding:138px 0 82px;background:radial-gradient(ellipse at 76% 48%,#ff8a2424,transparent 35%),radial-gradient(ellipse at 52% 88%,#c9ff0010,transparent 42%),linear-gradient(115deg,#10100f 10%,#171511 72%,#10100f)}
+.hero-grid{grid-template-columns:1.04fr .96fr;gap:clamp(28px,4vw,72px)}
+.hero-copy{padding-left:clamp(0px,1.2vw,18px)}
+.hero h1{font:500 clamp(4.1rem,8vw,7.1rem)/.91 Oswald,sans-serif;letter-spacing:-.025em;text-transform:uppercase;margin:0 0 27px;text-shadow:0 10px 30px #0008}
+.hero h1 span{font-weight:500;letter-spacing:-.035em;text-shadow:0 8px 35px #ff8a2430}
+.hero-intro{max-width:520px;font-size:clamp(.98rem,1.2vw,1.08rem)}
+.hero-art{height:min(610px,62vw);min-height:490px;perspective:1400px;transform-style:preserve-3d}
+.portrait-frame{width:min(410px,72%);height:94%;right:19%;bottom:0;border:0;background:transparent;overflow:visible;transform:translateZ(35px) rotateY(-9deg) rotateZ(1deg);box-shadow:none;isolation:isolate;animation:portraitHover 7s ease-in-out infinite}
+.portrait-frame:before{content:"";position:absolute;z-index:-1;inset:16% -10% 4%;border-radius:48%;background:radial-gradient(ellipse,#c9ff0040 0%,#ff8a2426 42%,transparent 72%);filter:blur(35px);transform:translateZ(-40px)}
+.portrait-frame:after{content:"";position:absolute;z-index:1;inset:0;background:linear-gradient(120deg,#ffffff16,transparent 28%,transparent 72%,#ffb15c12);mix-blend-mode:screen;pointer-events:none}
+.portrait-frame img{position:relative;z-index:0;width:100%;height:100%;object-fit:contain;object-position:center bottom;filter:none!important;mix-blend-mode:normal;image-rendering:auto;transform:translateZ(12px);drop-shadow:0 28px 34px #0009}
+.portrait-caption{display:none}
+.focus-card{right:-1%;top:12%;width:220px;transform:translateZ(105px) rotateY(-10deg) rotateX(3deg);box-shadow:18px 25px 65px #000b,0 0 0 1px #ff9a3a26,inset 0 1px #ffffff12}
+.orbit-art{right:0;top:0;transform:translateZ(60px);filter:drop-shadow(0 0 22px #ff8a2440)}
+.hero:after{content:"";position:absolute;inset:auto 0 0;height:180px;background:linear-gradient(transparent,var(--bg));pointer-events:none}
+@keyframes portraitHover{0%,100%{transform:translate3d(0,0,35px) rotateY(-9deg) rotateZ(1deg)}50%{transform:translate3d(0,-13px,55px) rotateY(-5deg) rotateZ(0deg)}}
+@media(max-width:850px){.wrap{width:calc(100% - 38px)}.hero{padding-top:115px}.hero-grid{grid-template-columns:1fr;gap:8px}.hero-art{height:490px;min-height:420px}.portrait-frame{width:min(330px,68%);right:24%}.focus-card{right:0;top:8%;width:190px}.hero h1{font-size:clamp(4rem,14vw,6rem)}}
+@media(max-width:520px){.hero-art{height:420px;min-height:390px}.portrait-frame{width:78%;right:13%}.focus-card{width:165px;padding:13px;top:2%;right:-5px}.focus-card p{font-size:.72rem}.hero h1{font-size:clamp(3.5rem,15vw,5rem)}}
 </style></head>
 <body>
 <div id="progress"></div>
