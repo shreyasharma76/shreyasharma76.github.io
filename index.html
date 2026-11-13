@@ -41,8 +41,49 @@
     @media(max-width:800px){.visual{overflow:hidden}.orb:after{inset:-30px}#hero3d{inset:0;width:100%;height:100%}}
     @media(prefers-reduced-motion:reduce){.orb,.orb:after,.visual .float,.hero:after{animation:none!important}}
   </style>
-</head>
-<body>
+
+<style id="cinematic-upgrade">
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Syne:wght@500;600;700;800&display=swap');
+:root{--bg:#080711;--panel:#111020;--panel2:#19152d;--text:#fffaff;--muted:#b2a9c8;--line:rgba(215,192,255,.17);--accent:#b45cff;--cyan:#42e8ff;--pink:#ff4fb8;--gold:#ffc86b;--max:1180px}
+body{font-family:'Space Grotesk',sans-serif;background:#080711;background-image:radial-gradient(ellipse at 14% 12%,rgba(165,65,255,.24),transparent 34%),radial-gradient(ellipse at 88% 28%,rgba(20,195,255,.14),transparent 30%),radial-gradient(ellipse at 55% 80%,rgba(255,56,163,.10),transparent 35%);color:var(--text)}
+h1,h2,h3,.brand{font-family:Syne,'Space Grotesk',sans-serif}
+body:before{opacity:.22;background-image:linear-gradient(rgba(183,104,255,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(183,104,255,.12) 1px,transparent 1px);background-size:64px 64px;mask-image:linear-gradient(to bottom,black,transparent 72%);transform:perspective(650px) rotateX(60deg) scale(1.8)}
+.nav{background:rgba(8,7,17,.72);border-bottom-color:rgba(190,130,255,.2);box-shadow:0 10px 45px #05030c99}.brand span{color:var(--pink)}
+.eyebrow,.mono{color:var(--cyan)}.availability{color:#baffed;border-color:#5cffd54a;background:#44ffc20e;box-shadow:0 0 24px #42ffc21c}.dot{background:#5cffc8;box-shadow:0 0 16px #5cffc8}
+h1{font-size:clamp(3.2rem,7.5vw,6.5rem);line-height:.98;letter-spacing:-.075em}
+h1 .gradient{background:linear-gradient(105deg,#ffb3e4 0%,#b47aff 38%,#51eaff 76%,#baffc9 100%);background-size:220% 220%;animation:gradientFlow 7s ease infinite;-webkit-background-clip:text;background-clip:text}
+@keyframes gradientFlow{50%{background-position:100% 50%}}
+.hero{min-height:790px;overflow:hidden}.hero:after{width:660px;height:660px;right:-10%;top:-4%;background:radial-gradient(circle,#9e36ff3b,#0ed9ff18 38%,#ff3ea414 58%,transparent 72%);filter:blur(18px)}
+.hero-grid{gap:48px}.lead{color:#e0d8f1}.sublead,.section-note{color:#b4a9ca}
+.btn{border-radius:999px;border-color:#c18cff45;background:#ffffff08;backdrop-filter:blur(12px)}.btn.primary{background:linear-gradient(105deg,#a83cff,#e34fc4 48%,#3ccfff);color:#fff;box-shadow:0 8px 35px #a33dff55,0 0 0 1px #ffffff25 inset}.btn:hover{box-shadow:0 12px 42px #a33dff55}
+.social a:hover{color:var(--pink)}
+.visual{min-height:480px}.orb{width:min(370px,78vw);background:radial-gradient(circle at 35% 30%,#ffb1e95c,#914cff35 35%,#23dfff18 60%,transparent 74%);border:1px solid #e6c4ff77;box-shadow:0 0 100px #8e3dff55,inset 0 0 80px #3feaff25}
+.orb:before,.orb:after{border-color:#61eaff88;box-shadow:0 0 32px #38dfff40}.orb:after{border-color:#f76dff88}.monogram{font-family:Syne;font-size:8rem;color:#fff;text-shadow:0 5px 0 #6732a5,0 16px 45px #f36bff99,0 0 70px #4deaff99}
+.float{background:linear-gradient(135deg,#24143ee8,#111a31e8);border-color:#bd8bff66;box-shadow:0 18px 55px #05020ca8,0 0 25px #a94bff22;color:#f7eaff;border-radius:16px}.float.one{color:#ffb3e5}.float.two{color:#70f0ff}.float.three{color:#c4ffca}
+section{border-top-color:#d3a3ff1a}.section-head h2{font-size:clamp(2.25rem,4.5vw,3.5rem);letter-spacing:-.07em}.panel,.skill,.project,.edu,.contact-card{background:linear-gradient(145deg,#1a1530e8,#100f20f5);border-color:#b991ff29;box-shadow:0 20px 60px #03020b77}
+.panel:hover,.skill:hover,.project:hover,.edu:hover,.contact-card:hover{border-color:#df83ff99;box-shadow:0 28px 75px #03020b99,0 0 36px #a63cff22}
+.fact{background:linear-gradient(135deg,#ffffff0b,#9b5dff0a);border-color:#bd8cff24}.fact strong{background:linear-gradient(90deg,#ffb4e9,#9d91ff,#65eaff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.skill{position:relative;overflow:hidden}.skill:before{content:"";position:absolute;inset:-1px;background:linear-gradient(125deg,#c14dff22,transparent 35%,#27dfff17);opacity:.65;pointer-events:none}.skill h3{position:relative;color:#f4eaff}.tag{background:#2a1d43;border-color:#c38aff30;color:#e9d9ff;border-radius:999px}.tag:hover{background:#6235a5;color:white}
+.job{border-bottom-color:#d5aaff24}.date{color:#69eaff}.job h3{font-family:Syne}.job .company{color:#e0c7ff}.job ul{color:#b8aecb}
+.project-grid{gap:22px}.project{border-radius:22px;min-height:310px;padding:28px;background:linear-gradient(145deg,#21173a,#101322 70%)}.project:before{width:260px;height:260px;right:-95px;top:-145px;background:radial-gradient(circle,#d34cff45,#6a44ff12 48%,transparent 70%)}.project.featured{min-height:300px;background:linear-gradient(110deg,#3c1d5d99,#17152b 58%,#102b3b)}.project-label{color:#77f2ff}.project-index{color:#ff9bdf}.project h3{font-size:1.4rem}.project p{color:#c0b5d5}.project:after{background:linear-gradient(120deg,transparent 20%,#ffffff14 48%,transparent 70%)}
+.edu{border-radius:18px}.contact-card{border-radius:22px}.contact-card a{color:#6beaff}
+footer{border-top-color:#cda4ff20}
+#hero3d{filter:drop-shadow(0 0 24px #a44bff44)}
+/* Portal previews on each work tile */
+.project{isolation:isolate}.project .portal-art{height:115px;margin:-5px 0 20px;border-radius:15px;position:relative;overflow:hidden;perspective:600px;background:radial-gradient(ellipse at center,#9b47ff30,transparent 65%),linear-gradient(135deg,#24173e,#101b2c);border:1px solid #d7a5ff26}
+.portal-art:before{content:"";position:absolute;width:125px;height:125px;left:50%;top:50%;transform:translate(-50%,-50%) rotateX(62deg) rotateZ(-28deg);border:2px solid #ed8cff;border-radius:50%;box-shadow:0 0 15px #ec78ff,0 0 45px #9e43ff,inset 0 0 22px #a04bff;animation:portalSpin 10s linear infinite}
+.portal-art:after{content:"";position:absolute;width:80px;height:80px;left:50%;top:50%;transform:translate(-50%,-50%) rotate(45deg);border:1px solid #57eaff;border-radius:18px;box-shadow:0 0 30px #45ddff88;animation:portalPulse 3.5s ease-in-out infinite}
+.portal-art i{position:absolute;width:5px;height:5px;border-radius:50%;background:#fff;box-shadow:0 0 14px #fff,0 0 25px #5ceaff;left:18%;top:25%;animation:floatDot 4s ease-in-out infinite}
+.portal-art i:nth-child(2){left:78%;top:70%;animation-delay:-1.4s}.portal-art i:nth-child(3){left:70%;top:18%;animation-delay:-2.2s}
+@keyframes portalSpin{to{transform:translate(-50%,-50%) rotateX(62deg) rotateZ(332deg)}}@keyframes portalPulse{50%{transform:translate(-50%,-50%) rotate(135deg) scale(.72);opacity:.45}}@keyframes floatDot{50%{transform:translate(20px,-16px) scale(1.7)}}
+#scrollProgress{position:fixed;z-index:30;left:0;top:0;height:3px;width:0;background:linear-gradient(90deg,#a63cff,#ff4fb8,#42e8ff);box-shadow:0 0 14px #d45cff;pointer-events:none}
+#cursorGlow{position:fixed;z-index:0;width:340px;height:340px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,#b34cff18,transparent 68%);transform:translate(-50%,-50%);mix-blend-mode:screen}
+#backTop{position:fixed;right:24px;bottom:24px;z-index:15;width:46px;height:46px;border-radius:50%;display:grid;place-items:center;background:#211532dd;border:1px solid #c78aff77;color:white;box-shadow:0 0 25px #a54cff55;opacity:0;pointer-events:none;transform:translateY(10px);transition:.3s}
+#backTop.show{opacity:1;pointer-events:auto;transform:none}
+@media(max-width:800px){.hero{min-height:auto}.visual{min-height:370px}.project{min-height:280px}.hero:after{right:-65%;top:15%}#cursorGlow{display:none}}
+@media(prefers-reduced-motion:reduce){.gradient,.portal-art:before,.portal-art:after,.portal-art i{animation:none!important}}
+</style></head>
+<body><div id="scrollProgress"></div><div id="cursorGlow"></div><a id="backTop" href="#home" aria-label="Back to top">↑</a>
 <header class="nav">
   <div class="wrap navin">
     <a class="brand" href="#home">SHREYA<span>.</span></a>
@@ -138,7 +179,7 @@
     <div class="wrap">
       <div class="section-head"><div><div class="eyebrow">04 / SELECTED WORK</div><h2>Projects & product work</h2></div><p class="section-note">A selection of systems and features I've contributed to. Company work is described at a high level without exposing private code or data.</p></div>
       <div class="project-grid">
-        <article class="project featured reveal"><div class="project-top"><span class="project-label">Featured · Speech / NLP</span><span class="project-index">01</span></div><h3>Google Meet Live Transcription Extension</h3><p>Browser-based live transcription workflow with tab-audio and microphone capture, AudioWorklet processing, 16 kHz PCM audio, WebSocket/backend integration and multilingual support.</p><div class="chips"><span class="tag">Chrome Extension</span><span class="tag">AudioWorklet</span><span class="tag">FastAPI</span><span class="tag">WebSockets</span><span class="tag">Speech AI</span></div></article>
+        <article class="project featured reveal"><div class="portal-art" aria-hidden="true"><i></i><i></i><i></i></div><div class="project-top"><span class="project-label">Featured · Speech / NLP</span><span class="project-index">01</span></div><h3>Google Meet Live Transcription Extension</h3><p>Browser-based live transcription workflow with tab-audio and microphone capture, AudioWorklet processing, 16 kHz PCM audio, WebSocket/backend integration and multilingual support.</p><div class="chips"><span class="tag">Chrome Extension</span><span class="tag">AudioWorklet</span><span class="tag">FastAPI</span><span class="tag">WebSockets</span><span class="tag">Speech AI</span></div></article>
         <article class="project reveal"><div class="project-top"><span class="project-label">Health-tech AI</span><span class="project-index">02</span></div><h3>HealNova AI Workflows</h3><p>Contributed to health AI service workflows including eye analysis, skin assessment, nutrition comparison, prescription-related processing, Vitamin Model integration and Period Tracker.</p><div class="chips"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">AWS Lambda</span><span class="tag">PostgreSQL</span></div></article>
         <article class="project reveal"><div class="project-top"><span class="project-label">Recommendations</span><span class="project-index">03</span></div><h3>Notification Recommendation System</h3><p>Worked on personalized notification recommendations and supporting backend workflows, including notification services, caching and suppression logic.</p><div class="chips"><span class="tag">Node.js</span><span class="tag">BytePlus Recommend</span><span class="tag">Redis</span><span class="tag">PostgreSQL</span></div></article>
         <article class="project reveal"><div class="project-top"><span class="project-label">AI web product</span><span class="project-index">04</span></div><h3>Xelta AI 3D Website Builder</h3><p>Contributed to authentication and prepaid-credit functionality, including backend integration, credit persistence and testing.</p><div class="chips"><span class="tag">Node.js</span><span class="tag">REST APIs</span><span class="tag">Database Integration</span></div></article>
@@ -217,5 +258,19 @@
     }catch(err){console.warn('3D scene unavailable; CSS fallback active.',err);}
   });
 </script>
-</body>
+
+<script>
+(() => {
+ const progress=document.getElementById('scrollProgress'), glow=document.getElementById('cursorGlow'), back=document.getElementById('backTop');
+ let raf=false;
+ function updateScroll(){const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=(max>0?scrollY/max*100:0)+'%';back.classList.toggle('show',scrollY>500);raf=false;}
+ addEventListener('scroll',()=>{if(!raf){requestAnimationFrame(updateScroll);raf=true;}},{passive:true});updateScroll();
+ addEventListener('pointermove',e=>{if(glow){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';}},{passive:true});
+ // Subtle pointer-reactive 3D tilt, clamped to keep content readable.
+ document.querySelectorAll('.project,.skill,.edu,.contact-card').forEach(card=>{
+   card.addEventListener('pointermove',e=>{if(matchMedia('(prefers-reduced-motion: reduce)').matches||innerWidth<800)return;const r=card.getBoundingClientRect(),x=(e.clientX-r.left)/r.width,y=(e.clientY-r.top)/r.height;card.style.transform='perspective(900px) rotateX('+((.5-y)*7)+'deg) rotateY('+((x-.5)*8)+'deg) translateY(-5px)';card.style.setProperty('--mx',(x*100)+'%');card.style.setProperty('--my',(y*100)+'%');});
+   card.addEventListener('pointerleave',()=>{card.style.transform='';});
+ });
+})();
+</script></body>
 </html>
