@@ -1,0 +1,19 @@
+{
+  "name": "Shreya Sharma",
+  "short_name": "Shreya",
+  "icons": [
+    {
+      "src": "favicon-32x32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    },
+    {
+      "src": "apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#2261e9",
+  "background_color": "#0B101E",
+  "display": "standalone"
+}
